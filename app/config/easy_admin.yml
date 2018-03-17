@@ -1,0 +1,17 @@
+imports:
+    - { resource: easy_admin/ }
+easy_admin:
+    site_name: 'CMS管理系统'
+    formats:
+        date: 'Y年m月d日'
+        time: 'H:i:s'
+        datetime: 'Y年m月d日H:i:s'
+    design:
+        menu:
+            - 'User'
+            - label: '内容管理'
+              children:
+                - Article
+                - Category
+                - CaseApp
+                - SiteBuild

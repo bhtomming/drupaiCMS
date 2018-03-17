@@ -1,0 +1,10 @@
+easy_admin:
+    entities:
+        Category:
+            class: 'AppBundle\Entity\Category'
+            label: '文章分类'
+            list:
+                title: '分类列表'
+                fields:
+                    - { property: title, label: '分类名称'}
+                    - { property: description, label: '描述信息'}

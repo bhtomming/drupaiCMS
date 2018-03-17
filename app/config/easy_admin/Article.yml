@@ -1,0 +1,18 @@
+easy_admin:
+    entities:
+        Article:
+            label: '文章管理'
+            class: 'AppBundle\Entity\Article'
+            form:
+                fields:
+                    - { property: title, label: '标题' }
+                    - { property: summary, label: '简介' }
+                    - { property: articlePic, label: '预览图片' }
+                    - { property: content, label: '文章内容' }
+                    - { property: categories, type: 'easyadmin_autocomplete' }
+            list:
+                title: '文章列表'
+                fields:
+                    - { property: title, label: '标题'}
+                    - { property: summary, label: '简介'}
+                    - { property: content, label: '内容'}

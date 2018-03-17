@@ -1,0 +1,11 @@
+easy_admin:
+    entities:
+        SiteBuild:
+            label: '建站服务'
+            class: 'AppBundle\Entity\CaseApp'
+            list:
+                title: '网站建设列表'
+                fields:
+                    - { property: siteType, label: '网站类型'}
+                    - { property: price, label: '价格'}
+                    - { property: cycle, label: '周期'}

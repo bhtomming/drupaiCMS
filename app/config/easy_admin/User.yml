@@ -1,0 +1,13 @@
+easy_admin:
+    entities:
+        User:
+            class: 'AppBundle\Entity\User'
+            label: '用户管理'
+            list:
+                title: '用户列表'
+                fields:
+                    - { property: id, label: 'ID' }
+                    - { property: username, label: '用户名' }
+                    - { property: email, label: '邮箱' }
+                    - { property: roles, label: '角色' }
+                    - { property: last_login, label: '最后登录时间' }

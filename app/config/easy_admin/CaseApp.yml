@@ -1,0 +1,10 @@
+easy_admin:
+    entities:
+        CaseApp:
+            label: '服务案例'
+            class: 'AppBundle\Entity\CaseApp'
+            list:
+                title: '案例列表'
+                fields:
+                    - { property: siteName, label: '网站名称'}
+                    - { property: siteLink, label: '链接'}
