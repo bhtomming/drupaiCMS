@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Category")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
  */
-class Category
+class Category implements \JsonSerializable
 {
     /**
      * @var int
@@ -92,6 +92,16 @@ class Category
     public function getDescription()
     {
         return $this->description;
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->title;
+    }
+
+    public function __toString()
+    {
+        return $this->title;
     }
 }
 

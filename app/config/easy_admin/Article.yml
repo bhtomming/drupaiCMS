@@ -7,9 +7,9 @@ easy_admin:
                 fields:
                     - { property: title, label: '标题' }
                     - { property: summary, label: '简介' }
-                    - { property: articlePic, label: '预览图片' }
+                    - { property: titlePic, label: '预览图片' }
                     - { property: content, label: '文章内容' }
-                    - { property: categories, type: 'easyadmin_autocomplete' }
+                    - { property: categories, type: 'AppBundle\Form\Type\CategoryType' }
             list:
                 title: '文章列表'
                 fields:
