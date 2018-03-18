@@ -13,6 +13,9 @@ easy_admin:
             list:
                 title: '文章列表'
                 fields:
+                    - { property: id, label: '编号'}
                     - { property: title, label: '标题'}
                     - { property: summary, label: '简介'}
                     - { property: content, label: '内容'}
+                    - { property: createdAt, label: '发布时间'}
+                    - { property: author, label: '作者'}

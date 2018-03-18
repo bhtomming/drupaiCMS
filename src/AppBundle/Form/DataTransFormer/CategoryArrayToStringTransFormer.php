@@ -33,13 +33,13 @@ class CategoryArrayToStringTransFormer implements DataTransformerInterface
         if(null === $string || '' === $string){
             return [];
         }
-        $names = array_filter(array_unique(array_map('trim',explode(',',$string))));
+        $names =  array_filter(array_unique(array_map('trim',explode(',',$string))));
 
         $tags = $this->manager->getRepository(Category::class)->findBy([
             'title' => $names
         ]);
 
-        $newName = array_diff($names,$tags);
+        $newName = array_diff_key($names,$tags);
 
         foreach ($newName as $name){
             $tag = new Category();

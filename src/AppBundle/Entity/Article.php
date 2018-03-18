@@ -171,7 +171,7 @@ class Article
      */
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
+        //$this->createdAt = new \DateTime();
         $this->categories = new ArrayCollection();
     }
 
@@ -199,18 +199,11 @@ class Article
         return $this->titlePic;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Article
-     */
-    public function setCreatedAt($createdAt)
+
+    public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
 
-        return $this;
     }
 
     /**
@@ -223,21 +216,9 @@ class Article
         return $this->createdAt;
     }
 
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Article
-     */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
-        if(null == $updatedAt){
-            $this->updatedAt = $this->getCreatedAt();
-            return $this;
-        }
         $this->updatedAt = $updatedAt;
-        return $this;
     }
 
     /**
@@ -254,14 +235,10 @@ class Article
      * Set author
      *
      * @param User $author
-     *
-     * @return Article
      */
     public function setAuthor(User $author)
     {
         $this->author = $author;
-
-        return $this;
     }
 
     /**
@@ -296,14 +273,4 @@ class Article
         return $this->categories;
     }
 
-    public function prePersist(){
-        $this->setUpdatedAt(new \DateTime());
-        if(null == $this->createdAt){
-            $this->setCreatedAt($this->getUpdatedAt());
-        }
-    }
-
-    public function preUpdate(){
-        $this->setUpdatedAt(new \DateTime());
-    }
 }
