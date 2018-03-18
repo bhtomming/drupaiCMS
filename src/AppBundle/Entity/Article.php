@@ -5,13 +5,16 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Article
  *
  * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleRepository")
+ * @Vich\Uploadable
  */
 class Article
 {
@@ -38,13 +41,6 @@ class Article
      */
     private $summary;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="titlePic", type="string", nullable=true)
-     *
-     */
-    private $titlePic;
 
     /**
      * @var string
@@ -83,6 +79,18 @@ class Article
      * Assert\DateTime
      */
     private $updatedAt;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="article_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
 
     /**
@@ -175,30 +183,6 @@ class Article
         $this->categories = new ArrayCollection();
     }
 
-    /**
-     * Set titlePic
-     *
-     * @param string $titlePic
-     *
-     * @return Article
-     */
-    public function setTitlePic($titlePic)
-    {
-        $this->titlePic = $titlePic;
-
-        return $this;
-    }
-
-    /**
-     * Get titlePic
-     *
-     * @return string
-     */
-    public function getTitlePic()
-    {
-        return $this->titlePic;
-    }
-
 
     public function setCreatedAt(\DateTime $createdAt)
     {
@@ -271,6 +255,27 @@ class Article
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    public function setImage($image){
+        $this->image = $image;
+    }
+
+    public function getImage(){
+        return $this->image;
+    }
+
+    public function getImageFile(){
+        return $this->imageFile;
+    }
+
+    public function setImageFile(File $image = null){
+        $this->imageFile = $image;
+
+        if($image){
+            $this->setUpdatedAt(new \DateTime());
+        }
+
     }
 
 }

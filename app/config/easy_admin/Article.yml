@@ -7,13 +7,14 @@ easy_admin:
                 fields:
                     - { property: title, label: '标题' }
                     - { property: summary, label: '简介' }
-                    - { property: titlePic, label: '预览图片' }
+                    - { property: imageFile, label: '预览图片', type: vich_image }
                     - { property: content, label: '文章内容' }
                     - { property: categories, type: 'AppBundle\Form\Type\CategoryType' }
             list:
                 title: '文章列表'
                 fields:
                     - { property: id, label: '编号'}
+                    - { property: image, label: '图片', type: image, base_path: "%app.path.article_images%"}
                     - { property: title, label: '标题'}
                     - { property: summary, label: '简介'}
                     - { property: content, label: '内容'}

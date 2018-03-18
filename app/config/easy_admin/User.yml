@@ -10,4 +10,4 @@ easy_admin:
                     - { property: username, label: '用户名' }
                     - { property: email, label: '邮箱' }
                     - { property: roles, label: '角色' }
-                    - { property: last_login, label: '最后登录时间' }
+                    - { property: lastLogin, label: '最后登录时间' }

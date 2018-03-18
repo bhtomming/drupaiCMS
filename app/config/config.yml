@@ -8,6 +8,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: zh_CN
+    app.path.article_images: /uploads/images/articles
 
 framework:
     #esi: ~
@@ -79,3 +80,11 @@ fos_user:
         sender_name: "%mailer_user%"
     service:
         mailer: fos_user.mailer.twig_swift
+
+#vich_file Config
+vich_uploader:
+    db_driver: orm
+    mappings:
+        article_images:
+            uri_prefix: "%app.path.article_images%"
+            upload_destination: "%kernel.root_dir%/../web/uploads/images/articles"
