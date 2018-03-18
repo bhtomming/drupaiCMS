@@ -8,7 +8,7 @@ easy_admin:
                     - { property: title, label: '标题' }
                     - { property: summary, label: '简介' }
                     - { property: imageFile, label: '预览图片', type: vich_image }
-                    - { property: content, label: '文章内容' }
+                    - { property: content, label: '文章内容', type: ckeditor, type_options: { config_name: advanced_config} }
                     - { property: categories, type: 'AppBundle\Form\Type\CategoryType' }
             list:
                 title: '文章列表'

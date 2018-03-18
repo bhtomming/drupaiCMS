@@ -15,3 +15,7 @@ easy_admin:
                 - Category
                 - CaseApp
                 - SiteBuild
+        assets:
+            js:
+                - '/bundles/cksourceckfinder/ckfinder/ckfinder.js'
+                - '/js/setup-ckfinder.js'
