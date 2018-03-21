@@ -33,3 +33,7 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    app.file.uploader:
+        class: 'AppBundle\Service\FileUploader'
+        arguments: ["%kernel.project_dir%/web%app.path.article_images%"]
+        public: true

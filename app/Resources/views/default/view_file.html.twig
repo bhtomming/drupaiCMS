@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    浏服务器文件
+{% endblock %}
+{% block body %}
+    {% for img_path in imgs_path %}
+        <img src="{{ img_path }}" width="200" height="200" />
+    {% endfor %}
+    {{ rootdir }}<br/>
+    {{ filedir }}<br/>
+{% endblock %}
+{% block javascripts %}
+{{ editor_js }}
+{% endblock %}

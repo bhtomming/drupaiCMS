@@ -9,8 +9,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: zh_CN
-    app.path.article_images: /uploads/images/articles
-
+    app.path.article_images: "/uploads/images/articles"
 framework:
     #esi: ~
     translator: { fallbacks: ['%locale%'] }
@@ -88,4 +87,4 @@ vich_uploader:
     mappings:
         article_images:
             uri_prefix: "%app.path.article_images%"
-            upload_destination: "%kernel.root_dir%/../web/uploads/images/articles"
+            upload_destination: "%kernel.root_dir%/../web%app.path.article_images%"

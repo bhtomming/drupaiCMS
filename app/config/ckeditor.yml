@@ -3,7 +3,11 @@ ivory_ck_editor:
     default_config: base_config
     configs:
         base_config:
+            filebrowserImageUploadUrl: '/uploads/images/'
             toolbar:
-                - {name: 'styles', items: ['Bold', 'Italic', 'BulletedList', 'Link']}
+                - {name: 'styles', items: ['Bold', 'Italic', 'BulletedList', 'Link','Image']}
         advanced_config:
             toolbar: full
+            filebrowserImageUploadRoute: 'upload'
+            filebrowserBrowseRoute: 'view_file'
+            image_previewText: '<h2>预览图片</h2>'
