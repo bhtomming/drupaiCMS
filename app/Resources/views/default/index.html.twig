@@ -32,153 +32,106 @@
                 </nav>
         </div>
             <!-- //网站基本信息显示 -->
-            <div class="header-bottom">
-                <div class="header-grids wow fadeInDownBig animated animated" style="visibility: visible; -webkit-animation-delay: 0.4s;">
-                    <section class="region region-sidebar-second column sidebar">
-                        <div id="block-user-login" class="block block-user first last odd" role="form">
-
-                            <h2 class="block__title block-title">用户登录</h2>
-
-                            <form action="/frontpage?destination=frontpage" method="post" id="user-login-form" accept-charset="UTF-8"><div><div class="form-item form-type-textfield form-item-name">
-                                        <label for="edit-name">用户名 <span class="form-required" title="此项必填。">*</span></label>
-                                        <input type="text" id="edit-name" name="name" value="" size="15" maxlength="60" class="form-text required" />
-                                    </div>
-                                    <div class="form-item form-type-password form-item-pass">
-                                        <label for="edit-pass">密码 <span class="form-required" title="此项必填。">*</span></label>
-                                        <input type="password" id="edit-pass" name="pass" size="15" maxlength="128" class="form-text required" />
-                                    </div>
-                                    <div class="item-list"><ul><li class="first"><a href="/user/register" title="创建新用户帐号">创建新帐号</a></li>
-                                            <li class="last"><a href="/user/password" title="通过电子邮件重设密码。">重设密码</a></li>
-                                        </ul></div><input type="hidden" name="form_build_id" value="form-bIkCdBctUWe6r11kaMnORmaoStChbok_XACAYr6dqBM" />
-                                    <input type="hidden" name="form_id" value="user_login_block" />
-                                    <div class="form-actions form-wrapper" id="edit-actions--2"><input type="submit" id="edit-submit--2" name="op" value="登录" class="form-submit" /></div></div></form>
+            <div class="header-bottom container">
+                <div class="card-group">
+                    <div class="col-md-3">
+                        <div class="card">
+                            {% image '@AppBundle/Resources/public/images/ds.png' %}
+                            <img src="{{ asset_url }}" class="card-img-top img-circle"/>
+                            {% endimage %}
+                            <div class="card-body">
+                                <h5 class="card-title text-center">交互原型设计</h5>
+                                <p class="card-text">信息架构、界面布局、快速原型、产品原型、低保真原型</p>
+                            </div>
                         </div>
-                    </section>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            {% image '@AppBundle/Resources/public/images/eyes.png' %}
+                            <img src="{{ asset_url }}" class="card-img-top img-circle"/>
+                            {% endimage %}
+                            <div class="card-body">
+                                <h5 class="card-title text-center">产品视觉设计</h5>
+                                <p class="card-text">视觉设计、品牌设计、图形设计、前端</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            {% image '@AppBundle/Resources/public/images/phone.png' %}
+                            <img src="{{ asset_url }}" class="card-img-top img-circle"/>
+                            {% endimage %}
+                            <div class="card-body">
+                                <h5 class="card-title text-center">移动产品设计</h5>
+                                <p class="card-text">移动界面设计、微信公众平台、IOS/Android界面设计</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            {% image '@AppBundle/Resources/public/images/pc.png' %}
+                            <img src="{{ asset_url }}" class="card-img-top img-circle"/>
+                            {% endimage %}
+                            <div class="card-body">
+                                <h5 class="card-title text-center">软件界面设计</h5>
+                                <p class="card-text">移动界面设计、微信公众平台、IOS/Android界面设计</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
     </header>
-
-
-    <div id="main">
-
-        <div id="content" class="column content" role="main">
+        <div id="content" class="ccontent" role="main">
             <div class="about-section">
-                <div class="region region-about">
-                    <div id="block-block-9" class="block block-block first last odd">
-
-
-                        <div class="container">
-                            <div class="about-grids">
-                                <div class="col-md-3 wow bounceInLeft animated" style="visibility: visible; -webkit-animation-delay: 0.4s;"><img src="/sites/default/files/ueditor/images/20170918/ds.png" title="ds.png" /><br /><h4>
-                                        交互原型设计</h4>
-                                    <p>
-                                        信息架构、界面布局、快速原型、产品原型、低保真原型</p>
-                                </div>
-                                <div class="col-md-3  wow fadeInUpBig animated animated"><img src="/sites/default/files/ueditor/images/20170918/eyes.png" title="eyes.png" alt="eyes.png" /><br /><h4>
-                                        产品视觉设计</h4>
-                                    <p>
-                                        视觉设计、品牌设计、图形设计、前端</p>
-                                </div>
-                                <div class="col-md-3  wow bounceInRight animated" style="visibility: visible; -webkit-animation-delay: 0.4s;"><img src="/sites/default/files/ueditor/images/20170918/pc.png" title="pc.png" /><br /><h4>
-                                        移动产品设计</h4>
-                                    <p>
-                                        移动界面设计、微信公众平台、IOS/Android界面设计</p>
-                                </div>
-                                <div class="col-md-3 wow bounceInRight animated" style="visibility: visible; -webkit-animation-delay: 0.6s;"><img src="/sites/default/files/ueditor/images/20170918/phone.png" title="phone.png" /><br /><h4>
-                                        软件界面设计</h4>
-                                    <p>
-                                        其它终端软件界面、Windows软件界面设计MacOS软件界面</p>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                        </div>
-
+            <div class="container">
+                <h3>关于我们</h3>
+                <div class="grid-container">
+                    <div class="col-md-5">
+                        {% image '@AppBundle/Resources/public/images/logo.png' %}
+                        <img src="{{ asset_url }}" class="img-responsive" />
+                        {% endimage %}
+                    </div>
+                    <div class="col-md-7">
+                        <p>北海助派网络信息技术在网络中积累了十多年的经验，从2004年开始便已经开始进入互联网行业，其中网络的各种知识都了解，我们对网络技术有自己的见解，经过那么多年的积累，我们非常明确什么样的知识适合初学者。所以我们努力给初学者打造一个良好的学习平台。在学习过程中我们非常清楚学习到一定知识后，你会以什么态度去学习，你还需要什么样的学习方式，为此我们会有视频教程，还有在线交流平台。</p>
+                        <p>作为一个有丰富网络经验的工作室还要考虑到并不是所有人都是为了学习而来，或许你只是需要一个自己的网站，或者你只是公司里负责网站搭建的人，现在你想找一个快速搭建网站的平台。还有你自己有网站，或者你的公司有网站，但由于经营不善导致门可罗雀，现在你急需要的就是一套教你如何经营网站的方法。你所想到的这些问题我们的已经想到，并且已经为你做好了解决方案，你只需要去学习并运用到实际当中即可。我们的宗旨是：让每个人都学会做网站。但这简短的一句话还是无法把我们描述清楚的。我们不仅仅要让每个人都学会做网站，还要让每个人都学会经营网站，学会用网站来赚钱，这才是我们的真正目的。</p>
                     </div>
                 </div>
             </div>
-
-
-            <div class="container">
-                <a id="main-content"></a>
-
-
-                <div class="view view-frontpage view-id-frontpage view-display-id-page container view-dom-id-9bd064157388c35397ea9c12512ee4dc">
-
-                    <div class="view-content">
-                        <div>
-                            <article class="node-1 node node-page node-promoted node-sticky node-teaser  clearfix" about="/ji-ben-xin-xi/guan-yu-wo-men.html" typeof="foaf:Document">
-
-                                <header>
-                                    <h2 class="node__title node-title"><a href="/ji-ben-xin-xi/guan-yu-wo-men.html">关于我们</a></h2>
-                                    <span property="dc:title" content="关于我们" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
-
-
-                                </header>
-                                <div class="col-md-12">
-                                    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><div class="content">
-                                                    <div class="about-grids row">
-                                                        <div class="col-md-5 about-img wow bounceInRight animated" style="visibility: visible; -webkit-animation-delay: 0.4s;">
-                                                            <a href="/ji-ben-xin-xi/guan-yu-wo-men.html"><img alt="北海助派网络信息" class="img-responsive" src="/sites/default/files/logo.png" style="height:300px; width:484px" title="助派网络信息技术" /></a>
-                                                        </div>
-                                                        <div class="col-md-7 about-grid wow bounceInLeft animated" style="visibility: visible; -webkit-animation-delay: 0.4s;">
-                                                            <p>
-                                                                北海助派网络信息技术在网络中积累了十多年的经验，从2004年开始便已经开始进入互联网行业，其中网络的各种知识都了解，我们对网络技术有自己的见解，经过那么多年的积累，我们非常明确什么样的知识适合初学者。所以我们努力给初学者打造一个良好的学习平台。在学习过程中我们非常清楚学习到一定知识后，你会以什么态度去学习，你还需要什么样的学习方式，为此我们会有视频教程，还有在线交流平台。
-                                                            </p>
-                                                            <p>
-                                                                作为一个有丰富网络经验的工作室还要考虑到并不是所有人都是为了学习而来，或许你只是需要一个自己的网站，或者你只是公司里负责网站搭建的人，现在你想找一个快速搭建网站的平台。还有你自己有网站，或者你的公司有网站，但由于经营不善导致门可罗雀，现在你急需要的就是一套教你如何经营网站的方法。你所想到的这些问题我们的已经想到，并且已经为你做好了解决方案，你只需要去学习并运用到实际当中即可。我们的宗旨是：让每个人都学会做网站。但这简短的一句话还是无法把我们描述清楚的。我们不仅仅要让每个人都学会做网站，还要让每个人都学会经营网站，学会用网站来赚钱，这才是我们的真正目的。
-                                                            </p>
-                                                        </div>
-                                                        <div class="clearfix">
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div></div></div>   	</div>
-                                <ul class="links inline"><li class="node-readmore first last"><a href="/ji-ben-xin-xi/guan-yu-wo-men.html" rel="tag" title="关于我们">查看更多<span class="element-invisible"> about 关于我们</span></a></li>
-                                </ul>
-                            </article>
-                        </div>
-                    </div>
-
-
-
-
-
-
-                </div>
-                <a href="http://www.drupai.com/rss.xml" class="feed-icon" title="订阅 首页种子"><img typeof="foaf:Image" src="http://www.drupai.com/misc/feed.png" width="16" height="16" alt="订阅 首页种子" /></a>	  </div>
-
+            </div>
             <div class="service-section">
-                <div class="region region-service">
-                    <div id="block-block-4" class="block block-block first last odd">
-
-
-                        <div class="container">
-                            <h3>网站建设</h3>
-                            <div class="service-grids">
-                                <div class="col-md-4 service-grid wow bounceInLeft animated" style="visibility: visible; -webkit-animation-delay: 0.4s;"><img alt="个人网站制作" class="img-responsive" src="/sites/default/files/ueditor/images/20151229/iconfont-ren.png" /><h4>个人网站</h4>
-                                    <p>轻便灵活的个人网站建设，你的网站你做主，一切信息由你制作。</p>
-                                </div>
-                                <div class="col-md-4 service-grid wow fadeInUpBig animated animated"><img alt="企业网站制作" class="img-responsive" src="/sites/default/files/ueditor/images/20151229/iconfont-qiye.png" /><h4>企业网站</h4>
-                                    <p>企业网站需要的各种模板都有，总有一款合适你，也有自由型企业网站，你的网站不再由模板约束，即时拥有。</p>
-                                </div>
-                                <div class="col-md-4 service-grid wow bounceInRight animated" style="visibility: visible; -webkit-animation-delay: 0.4s;"><img alt="订制网站" class="img-responsive" src="/sites/default/files/ueditor/images/20151229/iconfont-xitongdingzhi.png" /><h4>订制网站</h4>
-                                    <p>你不会制作网站，只会简单的word操作，没关系只要你会上网打字就能拥有自己的网站，只要一键即刻拥有。</p>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
+                <div class="container">
+                    <h3>网站建设</h3>
+                    <div class="service-grids">
+                        <div class="col-md-4 service-grid wow bounceInLeft animated" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+                            {% image '@AppBundle/Resources/public/images/iconfont-ren.png' %}
+                            <img alt="个人网站制作" class="img-responsive" src="{{ asset_url }}" />
+                            {% endimage %}
+                            <h4>个人网站</h4>
+                            <p>轻便灵活的个人网站建设，你的网站你做主，一切信息由你制作。</p>
                         </div>
-
+                        <div class="col-md-4 service-grid wow fadeInUpBig animated animated">
+                            {% image '@AppBundle/Resources/public/images/iconfont-qiye.png' %}
+                            <img alt="个人网站制作" class="img-responsive" src="{{ asset_url }}" />
+                            {% endimage %}
+                            <h4>企业网站</h4>
+                            <p>企业网站需要的各种模板都有，总有一款合适你，也有自由型企业网站，你的网站不再由模板约束，即时拥有。</p>
+                        </div>
+                        <div class="col-md-4 service-grid wow bounceInRight animated" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+                            {% image '@AppBundle/Resources/public/images/iconfont-xitongdingzhi.png' %}
+                            <img alt="个人网站制作" class="img-responsive" src="{{ asset_url }}" />
+                            {% endimage %}
+                            <h4>订制网站</h4>
+                            <p>你不会制作网站，只会简单的word操作，没关系只要你会上网打字就能拥有自己的网站，只要一键即刻拥有。</p>
+                        </div>
+                        <div class="clearfix"> </div>
                     </div>
                 </div>
             </div>
             <div class="work-section wow bounceIn animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
                 <div class="region region-webjian">
                     <div id="block-block-5" class="block block-block first last odd">
-
-
                         <div class="container">
-                            <h3>网站视频教程</h3>
+                            <h3>案例展示</h3>
                             <div class="latest-grids">
                                 <div class="latest-grid1">
                                     <div class="col-md-3 latest-grid work"><a href="/html.html" class="swipebox"><img src="/sites/default/files/ueditor/images/20151229/htmlpic.jpg" class="img-responsive" alt="HTML在线视频教程" title="HTML在线视频教程" /><br /><div class="textbox"><img src="/sites/default/files/ueditor/images/20151229/iconfont-shipin.png" class="img-responsive" alt="HTML视频教程" title="HTML视频教程" /></div>
@@ -234,35 +187,12 @@
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
-
-
-
-
-
-    </div>
     <div class="categories-section">
         <footer id="footer" class="region region-footer">
             <div id="block-block-3" class="block block-block first odd">
-
-
-                <script>
-                    <!--//--><![CDATA[// ><!--
-
-                    <!--//--><![CDATA[// ><!--
-                        window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"2","bdPos":"left","bdTop":"100"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-                    //--><!]]]]><![CDATA[>
-
-                    //--><!]]>
-                </script>
             </div>
             <div id="block-block-7" class="block block-block even">
-
-
                 <div class="container">
                     <div class="footer-grids">
                         <div class="col-md-4 up wow bounceInLeft animated" style="visibility: visible; -webkit-animation-delay: 0.4s;">
@@ -322,23 +252,13 @@
                                 <li>
                                     <p><a href="mailto:233238526@qq.com">233238526@qq.com</a></p>
                                 </li>
-                                <li>
-                                    <p><a href="http://webscan.360.cn/index/checkwebsite/url/www.drupai.com"><img src="http://img.webscan.360.cn/status/pai/hash/513a40b3fba8dd6fdd0f046cb74a00d7/?size=74x27" /></a></p>
-                                </li>
+
                             </ul></div>
                         <p> </p></div>
                 </div>
 
             </div>
-            <div id="block-block-2" class="block block-block last odd">
 
-
-                <div class="container">
-                    <script language="javascript" type="text/javascript" src="http://js.users.51.la/18730534.js"></script><p>    </p><noscript><br />
-                        &lt;a href="<a href="http://www.51.la/?18730534&quot;">http://www.51.la/?18730534"</a> target="_blank" _href="<a href="http://www.51.la/?18730534&quot;&gt;&lt;img">http://www.51.la/?18730534"&gt;&lt;img</a> alt="&amp;amp;#x6211;&amp;amp;#x8981;&amp;amp;#x5566;&amp;amp;#x514D;&amp;amp;#x8D39;&amp;amp;#x7EDF;&amp;amp;#x8BA1;" src="<a href="http://img.users.51.la/18730534.asp&quot;">http://img.users.51.la/18730534.asp"</a> style="border:none" _src="<a href="http://img.users.51.la/18730534.asp&quot;/&gt;&lt;/a&gt;">http://img.users.51.la/18730534.asp"/&gt;&lt;/a&gt;</a><br /></noscript>
-                </div>
-
-            </div>
         </footer>
     </div>
 </div>

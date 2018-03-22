@@ -94,7 +94,7 @@ vich_uploader:
             upload_destination: "%kernel.root_dir%/../web%app.path.article_images%"
 
 assetic:
-    debug:          '%kernel.debug%'
+    debug: '%kernel.debug%'
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
