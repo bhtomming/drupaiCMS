@@ -3,37 +3,50 @@
     浏服务器文件
 {% endblock %}
 {% block body %}
-    <ul>
-        <li>上传图片</li>
-        <li>修改名称</li>
-        <li>删除图片</li>
-        <li><input type="button" class="primary" value="确定" onclick="sure()" /></li>
-    </ul>
-    <ul>
-        {% for image in images %}
-            <li class="ImagePreviewBox">
-                <img src="{{ image.path }}" class="img-responsive" width="200" height="200"   title="{{ image.fileName }}" />
-                <span class="text-center">{{ image.fileName }}</span>
-            </li>
-        {% endfor %}
-    </ul>
 
-    {{ rootdir }}<br/>
-    {{ filedir }}<br/>
+        <button class="btn btn-success">上传图片</button>
+        <button class="btn btn-warning">修改名称</button>
+        <button class="btn btn-danger">删除图片</button>
+        <button type="button" class="btn btn-primary" onclick="sure()" >确定选择</button>
+
+    <div class="card-group">
+        {% for image in images %}
+            <div class="card">
+                <img src="{{ image.path }}" class="img-thumbnail" title="{{ image.fileName }}" />
+                <div class="card-body">
+                    <h4 class="card-title">{{ image.fileName }}</h4>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
 {% block javascripts %}
-    {% javascripts '@AppBundle/Resources/public/js/*' %}
+    {% javascripts
+    '@AppBundle/Resources/public/js/jquery-3.3.1.min.js'
+    '@AppBundle/Resources/public/js/*'
+    %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script type="text/javascript">
-        var img = $(".img-responsive");
+        var card = $(".card");
         var fileUri = '';
-        img.click(function(){
-            fileUri = $(this).attr('src');
+        card.click(function(){
+            fileUri = $(this).children(".img-thumbnail").attr('src');
+            card.removeClass('border-primary');
+            $(this).addClass('border-primary');
         });
-        img.dblclick(function(){
-            fileUri = $(this).attr('src');
+        card.dblclick(function(){
+            fileUri = $(this).children(".img-thumbnail").attr('src');
             sure();
+        });
+        card.hover(function(){
+            $(this).addClass('border-primary');
+        });
+        card.mouseleave(function(){
+            if(fileUri === $(this).children(".img-thumbnail").attr('src')){
+                return;
+            }
+            $(this).removeClass('border-primary');
         });
         function sure(){
             window.opener.CKEDITOR.tools.callFunction( {{ funNum }}, fileUri );
