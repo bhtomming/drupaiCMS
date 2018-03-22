@@ -3,12 +3,41 @@
     浏服务器文件
 {% endblock %}
 {% block body %}
-    {% for img_path in imgs_path %}
-        <img src="{{ img_path }}" width="200" height="200" />
-    {% endfor %}
+    <ul>
+        <li>上传图片</li>
+        <li>修改名称</li>
+        <li>删除图片</li>
+        <li><input type="button" class="primary" value="确定" onclick="sure()" /></li>
+    </ul>
+    <ul>
+        {% for image in images %}
+            <li class="ImagePreviewBox">
+                <img src="{{ image.path }}" class="img-responsive" width="200" height="200"   title="{{ image.fileName }}" />
+                <span class="text-center">{{ image.fileName }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+
     {{ rootdir }}<br/>
     {{ filedir }}<br/>
 {% endblock %}
 {% block javascripts %}
-{{ editor_js }}
+    {% javascripts '@AppBundle/Resources/public/js/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script type="text/javascript">
+        var img = $(".img-responsive");
+        var fileUri = '';
+        img.click(function(){
+            fileUri = $(this).attr('src');
+        });
+        img.dblclick(function(){
+            fileUri = $(this).attr('src');
+            sure();
+        });
+        function sure(){
+            window.opener.CKEDITOR.tools.callFunction( {{ funNum }}, fileUri );
+            window.close();
+        }
+    </script>
 {% endblock %}

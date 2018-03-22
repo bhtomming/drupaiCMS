@@ -43,19 +43,27 @@ class DefaultController extends Controller
     public function browseFileAction(Request $request){
         $rootpath=$this->getParameter('kernel.project_dir');
         $filedir = $this->getParameter('app.path.article_images');
+        $fullpath = $rootpath.'/web'.$filedir;
 
-        $images = scandir($filedir);
-        foreach ($images as $index => $image){
-            $images[$index] = $this->getParameter('app.path.article_images').'/'.$image;
+        $dirAll = scandir($fullpath);
+        $images = [];
+        foreach ($dirAll as $index => $image){
+            if($image != '.' && $image != '..'){
+                $img['path'] = $this->getParameter('app.path.article_images').'/'.$image;
+                $img['fileName'] = $image;
+                $images[] = $img;
+            }
         }
         $funNum = $request->query->get('CKEditorFuncNum');
         $fileUri = '/uploads/images/articles/df3f1f191c0cb8549aef390bf6cb0415.jpeg';
         $data= "<script type=\"text/javascript\">window.opener.CKEDITOR.tools.callFunction( $funNum, $fileUri );</script>";
         return $this->render('default/view_file.html.twig',[
-            'imgs_path' => $images,
+            'images' => $images,
             'editor_js' => $data,
             'rootdir' =>$rootpath,
-            'filedir' =>$filedir,
+            'filedir' => $filedir,
+            'funNum' =>$funNum,
+            'fileUri' => $fileUri,
         ]);
     }
 }
