@@ -66,4 +66,35 @@ class DefaultController extends Controller
             'fileUri' => $fileUri,
         ]);
     }
+
+    /**
+ * @Route("/api/images/del", name="del");
+ */
+    public function imagesDelAction(Request $request){
+        $data = [
+            'status' => 202,
+        ];
+        $fileName = $this->getParameter('kernel.project_dir').'/web'.$request->request->get('fileName');
+        if(file_exists($fileName)){
+            unlink($fileName);
+            $data['status'] = 200;
+        }
+        return new JsonResponse($data);
+    }
+
+    /**
+     * @Route("/api/images/modify", name="mod");
+     */
+    public function imagesModAction(Request $request){
+        $data = [
+            'status' => 202,
+        ];
+        $filePath = $this->getParameter('kernel.project_dir').'/web'.$request->request->get('filePath');
+        $fileName = $this->getParameter('kernel.project_dir').'/web'.$this->getParameter('app.path.article_images').'/'.$request->request->get('fileName');
+        if(file_exists($filePath)){
+            rename($filePath,$fileName);
+            $data['status'] = 200;
+        }
+        return new JsonResponse($data);
+    }
 }

@@ -5,7 +5,7 @@
 {% block body %}
 
         <button class="btn btn-success">上传图片</button>
-        <button class="btn btn-warning">修改名称</button>
+        <button class="btn btn-warning" data-toggle="modal" data-target="#modifyModal" >修改名称</button>
         <button class="btn btn-danger">删除图片</button>
         <button type="button" class="btn btn-primary" onclick="sure()" >确定选择</button>
 
@@ -19,38 +19,140 @@
             </div>
         {% endfor %}
     </div>
+    <div id="modifyModal" class="modal fade" tabindex="-1" aria-hidden="true" aria-labelledby="modifyModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modifyModalLabel">修改</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label class="label" for="name-input">名称</label>
+                            <input type="text" class="form-control" name="name-input" id="name-input">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 {% block javascripts %}
     {% javascripts
     '@AppBundle/Resources/public/js/jquery-3.3.1.min.js'
-    '@AppBundle/Resources/public/js/*'
+    '@AppBundle/Resources/public/js/bootstrap.min.js'
     %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script type="text/javascript">
-        var card = $(".card");
-        var fileUri = '';
-        card.click(function(){
-            fileUri = $(this).children(".img-thumbnail").attr('src');
-            card.removeClass('border-primary');
-            $(this).addClass('border-primary');
+        $(document).ready(function(){
+            var card = $(".card");
+            var fileUri = '';
+            var fileName = '';
+            card.click(function(){
+                fileUri = $(this).children(".img-thumbnail").attr('src');
+                fileName = $(this).children(".img-thumbnail").attr('title');
+                card.removeClass('border-primary');
+                $(this).addClass('border-primary');
+            });
+            card.dblclick(function(){
+                fileUri = $(this).children(".img-thumbnail").attr('src');
+                sure();
+            });
+            card.hover(function(){
+                $(this).addClass('border-primary');
+            });
+            card.mouseleave(function(){
+                if(fileUri === $(this).children(".img-thumbnail").attr('src')){
+                    return;
+                }
+                $(this).removeClass('border-primary');
+            });
+            $(".btn-danger").click(function(){
+                if(undefined === fileUri || '' === fileUri){
+                    alert("请选择图片");
+                    return false;
+                }
+                $.ajax({
+                    type: 'delete',
+                    dataType: 'json',
+                    url: "{{ path('del') }}",
+                    data: {
+                        fileName: fileUri
+                    },
+                    error: function(data){
+                        err(data);
+                    },
+                    success: function(data){
+                        success('删除',data);
+                    }
+                } );
+            });
+            $(".btn-warning").click(function(){
+                if(undefined === fileName || '' === fileName){
+                    alert('没选择图片，请选择你要修改的图片!');
+                    return false;
+                }
+            });
+
+            $("#modifyModal").on('show.bs.modal',function(){
+                $("#name-input").val(fileName);
+            });
+
+            $(".modal-footer>.btn-primary").click(function(){
+                newName = $("#name-input").val();
+                saveModify(newName);
+                $("#modifyModal").modal('hide');
+            });
         });
-        card.dblclick(function(){
-            fileUri = $(this).children(".img-thumbnail").attr('src');
-            sure();
-        });
-        card.hover(function(){
-            $(this).addClass('border-primary');
-        });
-        card.mouseleave(function(){
-            if(fileUri === $(this).children(".img-thumbnail").attr('src')){
-                return;
-            }
-            $(this).removeClass('border-primary');
-        });
+
+
+
         function sure(){
             window.opener.CKEDITOR.tools.callFunction( {{ funNum }}, fileUri );
             window.close();
+        }
+
+        function err(e){
+            alert('发生错误'+e);
+        }
+        function success(op,data){
+            if(data.status !== 200){
+                alert('服务器无法完成'+op+'操作!');
+            }else{
+                alert(op+'成功!');
+                window.location = location.href;
+            }
+        }
+
+
+        function saveModify(newFileName){
+            if(null === fileUri || '' === fileUri){
+                alert("请选择图片");
+                return false;
+            }
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                url: "{{ path('mod') }}",
+                data: {
+                    filePath: fileUri,
+                    fileName: newFileName
+                },
+                error: function(data){
+                    err(data);
+                },
+                success: function(data){
+                    success('修改',data);
+                }
+            } );
         }
     </script>
 {% endblock %}
