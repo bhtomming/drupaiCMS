@@ -41,12 +41,7 @@ services:
     app.loger.visited_log:
         class: 'AppBundle\Controller\VisitedLogController'
         public: true
-
-    mongo:
-        mongo:
-            host: '%database_host%'
-            port: '%database_port%'
-            user: '%database_user%'
-            pass: '%database_password%'
-            database: '%database_name%'
-            collection: visited_log
+    app.request_listener:
+        class: 'AppBundle\EventListener\RequestListener'
+        tags:
+           - { name: kernel.event_listener, event: kernel.request }

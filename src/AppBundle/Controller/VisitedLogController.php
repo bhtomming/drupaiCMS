@@ -34,5 +34,6 @@ class VisitedLogController extends Controller{
         $this->visitedLog->setVisitedTime(new \DateTime());
         $this->getDoctrine()->getManager()->persist($this->visitedLog);
         $this->getDoctrine()->getManager()->flush();
+
     }
 }

@@ -99,5 +99,6 @@ assetic:
     filters:
         cssrewrite: ~
 
-monolog:
+
+
 
