@@ -98,3 +98,6 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+
+monolog:
+

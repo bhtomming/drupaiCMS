@@ -1,0 +1,15 @@
+easy_admin:
+    entities:
+        FriendLink:
+            label: '友情链接'
+            class: 'AppBundle\Entity\FriendLink'
+            list:
+                title: '友情链接列表'
+                fields:
+                    - { property: id, label: 'ID' }
+                    - { property: site, label: '网站名称' }
+                    - { property: link, label: '网址' }
+            form:
+                fields:
+                    - { property: site, label: '网站名称' }
+                    - { property: link, label: '网址' }

@@ -15,3 +15,7 @@ easy_admin:
                 - Category
                 - CaseApp
                 - SiteBuild
+                - FriendLink
+            - label: '网站报表'
+              children:
+                - VisitedLog

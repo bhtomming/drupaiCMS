@@ -1,0 +1,24 @@
+easy_admin:
+    entities:
+        VisitedLog:
+            label: '访问报表'
+            class: 'AppBundle\Entity\VisitedLog'
+            disabled_actions: ['new']
+            list:
+                title: '访问报表列表'
+                fields:
+                    - { property: id, label: 'ID' }
+                    - { property: page, label: '访问页面' }
+                    - { property: title, label: '标题' }
+                    - { property: comeFrom, label: '来源' }
+                    - { property: visitedTime, label: '日期' }
+                    - { property: userName, label: '用户' }
+                    - { property: idAddress, label: 'IP地址' }
+            form:
+                fields:
+                    - { property: page, label: '访问页面' }
+                    - { property: comeFrom, label: '来源' }
+                    - { property: visitedTime, label: '日期' }
+                    - { property: title, label: '标题' }
+                    - { property: userName, label: '用户' }
+                    - { property: ipAddress, label: 'IP地址' }

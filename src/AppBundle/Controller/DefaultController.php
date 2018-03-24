@@ -48,28 +48,24 @@ class DefaultController extends Controller
         $dirAll = scandir($fullpath);
         $images = [];
         foreach ($dirAll as $index => $image){
-            if($image != '.' && $image != '..'){
-                $img['path'] = $this->getParameter('app.path.article_images').'/'.$image;
+            $relationPath = $filedir.'/'.$image;
+            $absolutePath = $rootpath.'/web'.$relationPath;
+            if($image != '.' && $image != '..' && !is_dir($absolutePath)){
+                $img['path'] = $relationPath;
                 $img['fileName'] = $image;
                 $images[] = $img;
             }
         }
-        $funNum = $request->query->get('CKEditorFuncNum');
-        $fileUri = '/uploads/images/articles/df3f1f191c0cb8549aef390bf6cb0415.jpeg';
-        $data= "<script type=\"text/javascript\">window.opener.CKEDITOR.tools.callFunction( $funNum, $fileUri );</script>";
         return $this->render('default/view_file.html.twig',[
             'images' => $images,
-            'editor_js' => $data,
             'rootdir' =>$rootpath,
             'filedir' => $filedir,
-            'funNum' =>$funNum,
-            'fileUri' => $fileUri,
         ]);
     }
 
     /**
- * @Route("/api/images/del", name="del");
- */
+     * @Route("/api/images/del", name="del");
+     */
     public function imagesDelAction(Request $request){
         $data = [
             'status' => 202,

@@ -37,3 +37,16 @@ services:
         class: 'AppBundle\Service\FileUploader'
         arguments: ["%kernel.project_dir%/web%app.path.article_images%"]
         public: true
+
+    app.loger.visited_log:
+        class: 'AppBundle\Controller\VisitedLogController'
+        public: true
+
+    mongo:
+        mongo:
+            host: '%database_host%'
+            port: '%database_port%'
+            user: '%database_user%'
+            pass: '%database_password%'
+            database: '%database_name%'
+            collection: visited_log
