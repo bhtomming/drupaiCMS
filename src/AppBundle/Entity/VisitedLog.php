@@ -24,21 +24,21 @@ class VisitedLog
     /**
      * @var string
      *
-     * @ORM\Column(name="page", type="string", length=255)
+     * @ORM\Column(name="page", type="string", length=50)
      */
     private $page;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=100, nullable=true)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="comeFrom", type="string", length=255)
+     * @ORM\Column(name="comeFrom", type="string", length=100, nullable=true)
      */
     private $comeFrom;
 
@@ -52,14 +52,14 @@ class VisitedLog
     /**
      * @var string
      *
-     * @ORM\Column(name="userName", type="string", length=255)
+     * @ORM\Column(name="userName", type="string", length=20)
      */
     private $userName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ipAddress", type="string", length=255)
+     * @ORM\Column(name="ipAddress", type="string", length=30)
      */
     private $ipAddress;
 

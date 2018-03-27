@@ -13,7 +13,7 @@ easy_admin:
                     - { property: comeFrom, label: '来源' }
                     - { property: visitedTime, label: '日期' }
                     - { property: userName, label: '用户' }
-                    - { property: idAddress, label: 'IP地址' }
+                    - { property: ipAddress, label: 'IP地址' }
             form:
                 fields:
                     - { property: page, label: '访问页面' }

@@ -38,10 +38,8 @@ services:
         arguments: ["%kernel.project_dir%/web%app.path.article_images%"]
         public: true
 
-    app.loger.visited_log:
-        class: 'AppBundle\Controller\VisitedLogController'
-        public: true
     app.request_listener:
         class: 'AppBundle\EventListener\RequestListener'
+        arguments: ["@service_container"]
         tags:
            - { name: kernel.event_listener, event: kernel.request }
