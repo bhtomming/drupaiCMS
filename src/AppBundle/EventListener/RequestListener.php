@@ -19,7 +19,6 @@ class RequestListener
     private $em;
     private $tokenStorage;
     private $checker;
-
     private $container;
 
     public function __construct(Container $container){
@@ -41,7 +40,7 @@ class RequestListener
             'application/json',
         ];
         $headerAccept = explode(',',$header->get('accept'));
-        if(array_intersect($logType,$headerAccept)){
+        if(!empty(array_intersect($logType,$headerAccept))){
             $visitedLog = new VisitedLog();
             $visitedLog->setPage($request->getUri());
             $referer = $request->server->get('HTTP_REFERER') ? $request->server->get('HTTP_REFERER'): '直接打开';
