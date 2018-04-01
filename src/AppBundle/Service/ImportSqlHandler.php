@@ -14,7 +14,7 @@ class ImportSqlHandler{
     public function readFromDatabase(){
         $conn = new \mysqli('127.0.0.1','root','root','drupai');
         $conn->query('set name utf8');
-        $sql = "select entity_id, body_value from drun_field_data_body";
+        $sql = "select entity_id, body_value,body_summary from drun_field_data_body";
         $bodyData = $conn->query($sql)->fetch_all();
         $pages = [];
         foreach ($bodyData as $index => $page){

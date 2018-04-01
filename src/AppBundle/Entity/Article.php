@@ -18,6 +18,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class Article
 {
+    use Page;
     /**
      * @var int
      *
