@@ -1,0 +1,19 @@
+easy_admin:
+    entities:
+        Menu:
+            label: '菜单设置'
+            class: 'AppBundle\Entity\Menu'
+            form:
+                fields:
+                    - { property: 'name', label: '菜单名称' }
+                    - { property: 'link', label: '路由名称' }
+                    - { property: 'description', label: '描述信息' }
+                    - { property: 'parentMenu', label: '父菜单', type: 'AppBundle\Form\Type\MenuType' }
+            list:
+                title: '菜单列表'
+                fields:
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'name', label: '名称' }
+                    - { property: 'link', label: '路由名称' }
+                    - { property: 'description', label: '描述信息' }
+                    - { property: 'parentMenuName', label: '父菜单' }

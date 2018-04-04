@@ -16,9 +16,10 @@ easy_admin:
                 - CaseApp
                 - SiteBuild
                 - FriendLink
-            - label: '网站报表'
+            - label: '网站设置'
               children:
                 - VisitedLog
+                - Menu
             - label: '网站数据'
               children:
                 - { label: '导入数据', route: 'data_update' }
