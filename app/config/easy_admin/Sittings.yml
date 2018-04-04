@@ -1,0 +1,13 @@
+easy_admin:
+    entities:
+        Sittings:
+            title: '网站设置'
+            label: '网站设置'
+            class: 'AppBundle\Entity\Sittings'
+            disabled_actions: ['delete']
+            form:
+                fields:
+                    - { property: 'title', label: '网站标题' }
+                    - { property: 'slogan', label: '口号' }
+                    - { property: 'keywords', label: '关键词' }
+                    - { property: 'description', label: '描述' }

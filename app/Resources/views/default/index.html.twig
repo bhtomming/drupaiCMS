@@ -1,24 +1,13 @@
 {% extends 'base.html.twig' %}
-{% block metas %}
-    <meta name="keywords" content="北海助派网络,企业网站制作,网站优化,网站运营,网站推广,企业网站价格,微信公众平台开发,小程序开发" />
-    <meta name="description" content="北海助派网络一直致力于网站开发，企业网站制作，微信公众平台开发以及小程序开发，努力打造全网络最简单易用的企业网站，给予企业最优惠的网站制作价格，为企业提供全方位的网站运营服务，帮助企业打造最优质的网络平台。" />
-    <meta name="generator" content="DrupaiCMS (http://www.drupai.com)" />
-    <meta name="rights" content="北海助派网络信息技术有限公司 (http://www.drupai.com)" />
-{% endblock %}
-
-{% block title %}
-    北海网站制作_企业网站制作_企业网站价格_微信公众平台开发_小程序开发_网站教程_编程教程_北海助派网络【官网】| 轻松搞掂网站问题
-{% endblock %}
 {% block body %}
     <header  class="header" id="header" role="banner">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a href="#" class="nav-link">网站首页</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">网站知识 </a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">网站建设</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">服务案例</a></li>
+                        {% for menu in menus %}
+                        <li class="nav-item"><a href="{{ menu.link }}" class="nav-link">{{ menu.name }}</a></li>
+                        {% endfor %}
                     </ul>
                     <div class="search form-inline">
                         <form action="/" method="post" id="search-block-form" accept-charset="UTF-8">

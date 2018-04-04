@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Menu;
+use AppBundle\Entity\Sittings;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -10,14 +12,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
+
     /**
      * @Route("/", name="homepage")
      */
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
+        $site = $this->getSite();
+        $menu = $this->getMenu();
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'site' => $site[0],
+            'menus' => $menu,
         ]);
     }
 
@@ -92,5 +98,15 @@ class DefaultController extends Controller
             $data['status'] = 200;
         }
         return new JsonResponse($data);
+    }
+
+    public function getSite(){
+        $em = $this->getDoctrine()->getManager();
+        return $em->getRepository(Sittings::class)->findAll();
+    }
+
+    public function getMenu(){
+        $em = $this->getDoctrine()->getManager();
+        return $em->getRepository(Menu::class)->findAll();
     }
 }
