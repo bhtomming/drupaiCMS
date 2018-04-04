@@ -1,8 +1,0 @@
-{% block category_widget %}
-    <div class="input-group ">
-        {{ form_widget(form, {'attr': {'data-toggle': 'tagsinput', 'data-tags': categories | json_encode}}) }}
-        <span class="input-group-addon">
-            <span class="fa fa-tags" aria-hidden="true"></span>
-        </span>
-    </div>
-{% endblock %}

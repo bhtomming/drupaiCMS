@@ -9,7 +9,7 @@ easy_admin:
                     - { property: summary, label: '简介' }
                     - { property: imageFile, label: '预览图片', type: vich_image }
                     - { property: content, label: '文章内容', type: ckeditor, type_options: { config_name: advanced_config} }
-                    - { property: categories, type: 'AppBundle\Form\Type\CategoryType' }
+                    - { property: categories, label: '所属分类', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Category'} }
             list:
                 title: '文章列表'
                 fields:
