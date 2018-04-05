@@ -1,0 +1,15 @@
+{% if abouts %}
+<h3>关于我们</h3>
+<div class="row">
+    {% for about in abouts %}
+    <div class="col-md-5">
+        {% image '@AppBundle/Resources/public/images/logo.png' %}
+        <img src="{{ asset_url }}" class="img-responsive" />
+        {% endimage %}
+    </div>
+    <div class="col-md-7">
+        {{ about.summary }}
+    </div>
+        {% endfor %}
+</div>
+{% endif %}

@@ -1,0 +1,8 @@
+{% if categories %}
+<h3>知识分类</h3>
+<ul class=" list-paddingleft-2">
+    {% for category in categories %}
+    <li>{{ category.title }}</li>
+    {% endfor %}
+</ul>
+{% endif %}

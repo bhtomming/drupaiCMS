@@ -10,4 +10,17 @@ namespace AppBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByCategory($value){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT a, c FROM AppBundle:Article a
+                      JOIN a.categories c
+                      WHERE c.title = :title'
+            )->setParameter('title',$value);
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 }

@@ -1,0 +1,8 @@
+{% if links %}
+    <h3>友情链接</h3>
+    <ul class=" list-paddingleft-2">
+        {% for link in links %}
+            <li><a href="{{ link.link }}" target="_blank">{{ link.site }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}

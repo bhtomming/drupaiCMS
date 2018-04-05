@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+        {% if menus %}{%- for menu in menus -%}
+            <li class="nav-item"><a href="{{ menu.0.link }}" class="nav-link">{{ menu.0.name }}</a>
+                {% if menu.submenu %}<ul class="tb-megamenu-subnav mega-nav level-1 items-9">
+                {% for smenu in menu.submenu -%}
+                <li class="tb-megamenu-item level-2 mega"><a href="{{ smenu.link }}"  title="{{ smenu.name }}">{{ smenu.name }} </a></li>
+                {% endfor -%}
+                </ul>
+                {%- endif -%}
+            </li>
+        {%- endfor -%}{% endif -%}
+        </ul>
+        <div class="search form-inline">
+            <form action="/" method="post" id="search-block-form" accept-charset="UTF-8">
+                <input title="请输入您想搜索的关键词。" type="text" id="edit-search-block-form--2"   class="form-control mr-sm-2" />
+                <button type="submit" id="edit-submit"  class="btn btn-outline-info my-2 my-sm-0" >搜索</button>
+            </form>
+        </div>
+    </div>
+</nav>

@@ -2,6 +2,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Article;
+use AppBundle\Entity\Category;
+use AppBundle\Entity\FriendLink;
 use AppBundle\Entity\Menu;
 use AppBundle\Entity\Sittings;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -21,9 +24,21 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         $site = $this->getSite();
         $menu = $this->getMenu();
+        $links = $this->getFriendLink();
+        $categories = $this->getCategory();
+        $technology = $this->getArticleBy(['categories' => 'technology']);
+        $cases = $this->getArticleBy(['categories' => 'case']);
+        $service = $this->getArticleBy(['categories' => 'service']);
+        $about = $this->getArticleBy(['categories' => 'about']);
         return $this->render('default/index.html.twig', [
             'site' => $site[0],
             'menus' => $menu,
+            'links' => $links,
+            'categories' => $categories,
+            'technologies' => $technology,
+            'cases' => $cases,
+            'services' => $service,
+            'abouts' => $about,
         ]);
     }
 
@@ -107,6 +122,37 @@ class DefaultController extends Controller
 
     public function getMenu(){
         $em = $this->getDoctrine()->getManager();
-        return $em->getRepository(Menu::class)->findAll();
+        $menus = $em->getRepository(Menu::class)->findAll();
+        $parentMenus = [];
+        foreach ($menus as $menu){
+            if(null == $menu->getParentMenu()){
+                $id = $menu->getId();
+                $parentMenus[$id][] = $menu;
+                $parentMenus[$id]['submenu'] = [];
+            }else{
+                $pid = $menu->getParentMenu()->getId();
+                $parentMenus[$pid]['submenu'][] = $menu;
+            }
+        }
+        return $parentMenus;
+    }
+
+    public function getFriendLink(){
+        $em = $this->getDoctrine()->getManager();
+        return $em->getRepository(FriendLink::class)->findAll();
+    }
+
+    public function getCategory(){
+        $em = $this->getDoctrine()->getManager();
+        return $em->getRepository(Category::class)->findAll();
+    }
+
+    public function getArticleBy(array $queries = null){
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository(Article::class);
+        if(empty($queries)) {
+            return $article->findAll();
+        }
+        return $article->findByCategory($queries['categories']);
     }
 }
