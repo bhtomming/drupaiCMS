@@ -93,6 +93,12 @@ class Article
      */
     private $imageFile;
 
+    /**
+     * @var string
+     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
+     */
+    private $slug;
+
 
     /**
      * Get id
@@ -276,7 +282,14 @@ class Article
         if($image){
             $this->setUpdatedAt(new \DateTime());
         }
+    }
 
+    public function setSlug($slug){
+        $this->slug = $slug;
+    }
+
+    public function getSlug(){
+        return $this->slug;
     }
 
 }

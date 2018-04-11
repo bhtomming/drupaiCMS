@@ -1,46 +1,15 @@
+{% if swipers %}
 <div class="row">
+    {% for swiper in swipers %}
     <div class="col-md-3">
         <div class="card bg-primary text-white">
-            {% image '@AppBundle/Resources/public/images/ds.png' %}
-            <img src="{{ asset_url }}" class="card-img-top img-circle"/>
-            {% endimage %}
+            <img src="{{ swiper_image }}/{{ swiper.image }}" class="card-img-top img-circle"/>
             <div class="card-body">
-                <h5 class="card-title text-center">交互原型设计</h5>
-                <p class="card-text">信息架构、界面布局、快速原型、产品原型、低保真原型</p>
+                <h5 class="card-title text-center">{{ swiper.title }}</h5>
+                <p class="card-text">{{ swiper.description }}</p>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card bg-primary text-white">
-            {% image '@AppBundle/Resources/public/images/eyes.png' %}
-            <img src="{{ asset_url }}" class="card-img-top img-circle"/>
-            {% endimage %}
-            <div class="card-body">
-                <h5 class="card-title text-center">产品视觉设计</h5>
-                <p class="card-text">视觉设计、品牌设计、图形设计、前端</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card bg-primary text-white">
-            {% image '@AppBundle/Resources/public/images/phone.png' %}
-            <img src="{{ asset_url }}" class="card-img-top img-circle"/>
-            {% endimage %}
-            <div class="card-body">
-                <h5 class="card-title text-center">移动产品设计</h5>
-                <p class="card-text">移动界面设计、微信公众平台、IOS/Android界面设计</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card bg-primary text-white">
-            {% image '@AppBundle/Resources/public/images/pc.png' %}
-            <img src="{{ asset_url }}" class="card-img-top img-circle"/>
-            {% endimage %}
-            <div class="card-body">
-                <h5 class="card-title text-center">软件界面设计</h5>
-                <p class="card-text">移动界面设计、微信公众平台、IOS/Android界面设计</p>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 </div>
+{% endif %}

@@ -3,10 +3,14 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
+use AppBundle\Entity\CaseApp;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\FriendLink;
 use AppBundle\Entity\Menu;
+use AppBundle\Entity\SiteBuild;
 use AppBundle\Entity\Sittings;
+use AppBundle\Entity\Swiper;
+use Doctrine\Common\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -22,14 +26,16 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        $site = $this->getSite();
-        $menu = $this->getMenu();
-        $links = $this->getFriendLink();
-        $categories = $this->getCategory();
-        $technology = $this->getArticleBy(['categories' => 'technology']);
-        $cases = $this->getArticleBy(['categories' => 'case']);
-        $service = $this->getArticleBy(['categories' => 'service']);
-        $about = $this->getArticleBy(['categories' => 'about']);
+        $em = $this->getDoctrine()->getManager();
+        $site = $this->getEntityAll($em,Sittings::class);
+        $menu = $this->getMenu($em);
+        $links = $this->getEntityAll($em,FriendLink::class);
+        $categories = $this->getEntityAll($em,Category::class );
+        $technology = $this->getArticleBy($em,['categories' => 'technology']);
+        $cases = $this->getEntityAll($em,CaseApp::class);
+        $service = $this->getEntityAll($em,SiteBuild::class);
+        $about = $this->getArticleBy($em,['categories' => 'about']);
+        $swipers = $this->getEntityAll($em,Swiper::class);
         return $this->render('default/index.html.twig', [
             'site' => $site[0],
             'menus' => $menu,
@@ -39,6 +45,7 @@ class DefaultController extends Controller
             'cases' => $cases,
             'services' => $service,
             'abouts' => $about,
+            'swipers' => $swipers,
         ]);
     }
 
@@ -56,6 +63,13 @@ class DefaultController extends Controller
             'url' => $this->getParameter('app.path.article_images').'/'.$fileName,
         ];
         return new JsonResponse($data);
+    }
+
+    /**
+     * @Route("/article/{id}", name="show")
+     */
+    public function showAction(){
+
     }
 
     /**
@@ -115,13 +129,9 @@ class DefaultController extends Controller
         return new JsonResponse($data);
     }
 
-    public function getSite(){
-        $em = $this->getDoctrine()->getManager();
-        return $em->getRepository(Sittings::class)->findAll();
-    }
 
-    public function getMenu(){
-        $em = $this->getDoctrine()->getManager();
+
+    public function getMenu(ObjectManager $em){
         $menus = $em->getRepository(Menu::class)->findAll();
         $parentMenus = [];
         foreach ($menus as $menu){
@@ -137,22 +147,15 @@ class DefaultController extends Controller
         return $parentMenus;
     }
 
-    public function getFriendLink(){
-        $em = $this->getDoctrine()->getManager();
-        return $em->getRepository(FriendLink::class)->findAll();
-    }
-
-    public function getCategory(){
-        $em = $this->getDoctrine()->getManager();
-        return $em->getRepository(Category::class)->findAll();
-    }
-
-    public function getArticleBy(array $queries = null){
-        $em = $this->getDoctrine()->getManager();
+    public function getArticleBy(ObjectManager $em,array $queries = null){
         $article = $em->getRepository(Article::class);
         if(empty($queries)) {
             return $article->findAll();
         }
         return $article->findByCategory($queries['categories']);
+    }
+
+    public function getEntityAll(ObjectManager $em,$className){
+        return $em->getRepository($className)->findAll();
     }
 }

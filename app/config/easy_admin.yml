@@ -15,6 +15,7 @@ easy_admin:
                 - Category
                 - CaseApp
                 - SiteBuild
+                - Swiper
                 - FriendLink
             - label: '网站设置'
               children:

@@ -3,7 +3,7 @@
 <div class="row">
     {% for technology in technologies %}
     <div class="col-md-4">
-        <img alt="网站基础知识" class="img-responsive" src="{{ technology.image }}" title="网站基础知识" />
+        <img alt="{{ technology.title }}" class="img-responsive" src="{{ article_image }}/{{ technology.image }}" title="{{ technology.title }}" />
         <h4><a href="#">{{ technology.title }}</a></h4>
         <p>{{ technology.summary }}</p>
         <a class="button hvr-shutter-in-vertical" href="http://www.drupai.com/html.html">更多</a>

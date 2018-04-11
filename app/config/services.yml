@@ -47,3 +47,7 @@ services:
     app.sql.migrate:
         class: 'AppBundle\Service\ImportSqlHandler'
         public: true
+
+    pinyin:
+        class: 'AppBundle\Service\PinYin'
+        public: true

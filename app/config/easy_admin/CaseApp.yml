@@ -3,8 +3,16 @@ easy_admin:
         CaseApp:
             label: '服务案例'
             class: 'AppBundle\Entity\CaseApp'
+            form:
+                fields:
+                    - { property: 'siteName', label: '网站名称' }
+                    - { property: 'siteLink', label: '域名' }
+                    - { property: 'imageFile', label: '图片', type: 'vich_image' }
+                    - { property: 'details', label: '详细信息', type: 'textarea' }
             list:
                 title: '案例列表'
                 fields:
+                    - { property: id, label: 'ID'}
+                    - { property: sitePic, label: '图片', type: 'image', base_path: '%app.path.case_images%'}
                     - { property: siteName, label: '网站名称'}
                     - { property: siteLink, label: '链接'}

@@ -10,6 +10,9 @@ imports:
 parameters:
     locale: zh_CN
     app.path.article_images: "/uploads/images/articles"
+    app.path.swiper_images: "/uploads/images/swiper"
+    app.path.service_images: "/uploads/images/service"
+    app.path.case_images: "/uploads/images/case"
 
 
 framework:
@@ -43,6 +46,11 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes:
         - 'form/fields.html.twig'
+    globals:
+        article_image: '%app.path.article_images%'
+        swiper_image: '%app.path.swiper_images%'
+        service_image: '%app.path.service_images%'
+        case_image: '%app.path.case_images%'
 
 # Doctrine Configuration
 doctrine:
@@ -92,6 +100,15 @@ vich_uploader:
         article_images:
             uri_prefix: "%app.path.article_images%"
             upload_destination: "%kernel.root_dir%/../web%app.path.article_images%"
+        swiper_images:
+            uri_prefix: "%app.path.swiper_images%"
+            upload_destination: "%kernel.root_dir%/../web%app.path.swiper_images%"
+        service_images:
+            uri_prefix: "%app.path.service_images%"
+            upload_destination: "%kernel.root_dir%/../web%app.path.service_images%"
+        case_images:
+            uri_prefix: "%app.path.case_images%"
+            upload_destination: "%kernel.root_dir%/../web%app.path.case_images%"
 
 assetic:
     debug: '%kernel.debug%'

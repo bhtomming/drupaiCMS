@@ -1,69 +1,15 @@
+{% if cases %}
 <h3>案例展示</h3>
 <div class="row">
+    {% for case in cases %}
     <div class="col-md-3">
-        <a href="/html.html" class="swipebox">
-            <img src="/sites/default/files/ueditor/images/20151229/htmlpic.jpg" class="img-responsive" alt="HTML在线视频教程" title="HTML在线视频教程" />
+        <a href="{{ case.siteLink }}" class="swipebox">
+            <img src="{{ case_image }}/{{ case.sitePic }}" class="img-responsive" alt="{{ case.siteName }}" title="{{ case.siteName }}" />
             <div class="textbox">
-                <img src="/sites/default/files/ueditor/images/20151229/iconfont-shipin.png" class="img-responsive" alt="HTML视频教程" title="HTML视频教程" />
+                <img src="/bundles/app/images/iconfont-shipin.png" class="img-responsive" alt="HTML视频教程" title="HTML视频教程" />
             </div>
         </a>
     </div>
-    <div class="col-md-3">
-        <a href="/sites/default/files/ueditor/images/20151229/csspic.jpg" class="swipebox">
-            <img src="/sites/default/files/ueditor/images/20151229/csspic.jpg" class="img-responsive" alt="CSS在线视频教程" title="CSS在线视频教程" />
-            <div class="textbox">
-                <img src="/sites/default/files/ueditor/images/20151229/iconfont-shipin.png" class="img-responsive" alt="CSS视频教程" title="CSS视频教程" />
-            </div>
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="/sites/default/files/ueditor/images/20151229/javascriptpic.jpg" class="swipebox">
-            <img src="/sites/default/files/ueditor/images/20151229/javascriptpic.jpg" class="img-responsive" alt="javascript在线视频教程" title="javascript在线视频教程" />
-            <div class="textbox">
-                <img src="/sites/default/files/ueditor/images/20151229/iconfont-shipin.png" class="img-responsive" alt="javascript视频教程" title="javascript视频教程" />
-            </div>
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="/sites/default/files/ueditor/images/20151229/seoipc.jpg" class="swipebox">
-            <img src="/sites/default/files/ueditor/images/20151229/seoipc.jpg" class="img-responsive" alt="SEO在线视频教程" title="SEO在线视频教程" />
-            <div class="textbox">
-                <img src="/sites/default/files/ueditor/images/20151229/iconfont-shipin.png" class="img-responsive" alt="SEO视频教程" title="SEO视频教程" />
-            </div>
-        </a>
-    </div>
+    {% endfor %}
 </div>
-<div class="row">
-    <div class="col-md-3">
-        <a href="/sites/default/files/ueditor/images/20151229/phppic.jpg" class="swipebox">
-            <img src="/sites/default/files/ueditor/images/20151229/phppic.jpg" class="img-responsive" alt="PHP在线视频教程" title="PHP在线视频教程" />
-            <div class="textbox">
-                <img src="/sites/default/files/ueditor/images/20151229/iconfont-shipin.png" class="img-responsive" alt="PHP视频教程" title="PHP视频教程" />
-            </div>
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="/sites/default/files/ueditor/images/20151229/cmspic.jpg" class="swipebox">
-            <img src="/sites/default/files/ueditor/images/20151229/cmspic.jpg" class="img-responsive" alt="主流CMS在线视频教程" title="主流CMS在线视频教程" />
-            <div class="textbox">
-                <img src="/sites/default/files/ueditor/images/20151229/iconfont-shipin.png" class="img-responsive" alt="主流CMS视频教程" title="主流CMS视频教程" />
-            </div>
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="/sites/default/files/ueditor/images/20151229/kuangjiapic.jpg" class="swipebox">
-            <img src="/sites/default/files/ueditor/images/20151229/kuangjiapic.jpg" class="img-responsive" alt="web前端框架在线视频教程" title="web前端框架在线视频教程" />
-            <div class="textbox">
-                <img src="/sites/default/files/ueditor/images/20151229/iconfont-shipin.png" class="img-responsive" alt="web前端框架视频教程" title="web前端框架视频教程" />
-            </div>
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="/sites/default/files/ueditor/images/20151229/yunyingpic.jpg" class="swipebox">
-            <img src="/sites/default/files/ueditor/images/20151229/yunyingpic.jpg" class="img-responsive" alt="网站运营在线视频教程" title="网站运营在线视频教程" />
-            <div class="textbox">
-                <img src="/sites/default/files/ueditor/images/20151229/iconfont-shipin.png" class="img-responsive" alt="网站运营视频教程" title="网站运营视频教程" />
-            </div>
-        </a>
-    </div>
-</div>
+{% endif %}

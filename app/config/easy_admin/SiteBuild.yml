@@ -2,10 +2,18 @@ easy_admin:
     entities:
         SiteBuild:
             label: '建站服务'
-            class: 'AppBundle\Entity\CaseApp'
+            class: 'AppBundle\Entity\SiteBuild'
+            form:
+                fields:
+                    - { property: site_type, label: '网站类型', type: 'text' }
+                    - { property: imageFile, label: '图片', type: 'vich_image' }
+                    - { property: price, label: '价格' }
+                    - { property: cycle, label: '开发周期' }
             list:
                 title: '网站建设列表'
                 fields:
-                    - { property: siteType, label: '网站类型'}
+                    - { property: id, label: 'ID'}
+                    - { property: site_pic, label: '图片',type: 'image', base_path: '%app.path.service_images%'}
+                    - { property: site_type, label: '网站类型'}
                     - { property: price, label: '价格'}
                     - { property: cycle, label: '周期'}

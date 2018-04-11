@@ -37,6 +37,10 @@ class AdminController extends BaseAdminController
         method_exists($entity,'setCreatedAt') && method_exists($entity,'getCreatedAt') && null == $entity->getCreatedAt() ? $entity->setCreatedAt(new \DateTime()) : null;
         method_exists($entity,'setUpdatedAt') ? $entity->setUpdatedAt(new \DateTime()) : null;
         method_exists($entity,'setAuthor') ? $entity->setAuthor($this->getUser()) : null;
+        if($entity instanceof Article ){
+            $pinyin = $this->fillPinYin($entity->getTitle());
+            $entity->setSlug($pinyin);
+        }
     }
 
     /**
@@ -57,6 +61,10 @@ class AdminController extends BaseAdminController
             $this->getDoctrine()->getManager()->flush();
         }
         return $this->redirectToRoute('admin');
+    }
+
+    public function fillPinYin($string){
+        return $this->container->get('pinyin')->getChineseChar($string);
     }
 
 }

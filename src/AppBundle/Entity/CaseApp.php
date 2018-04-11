@@ -3,12 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Caseapp
  *
  * @ORM\Table(name="caseapp")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CaseAppRepository")
+ * @Vich\Uploadable
  */
 class CaseApp
 {
@@ -35,6 +38,12 @@ class CaseApp
      * @ORM\Column(name="site_pic", type="string", nullable=true)
      */
     private $sitePic;
+
+    /**
+     * @Vich\UploadableField(mapping="case_images", fileNameProperty="site_pic")
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * @var string
@@ -155,5 +164,13 @@ class CaseApp
     public function getSitePic()
     {
         return $this->sitePic;
+    }
+
+    public function getImageFile(){
+        return $this->imageFile;
+    }
+
+    public function setImageFile(File $image = null){
+        $this->imageFile = $image;
     }
 }
