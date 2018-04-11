@@ -1,6 +1,16 @@
 {% extends 'base.html.twig' %}
-{% block header_class 'header' %}
-
+{% block header_class 'home' %}
+{% block stylesheets %}
+    {% stylesheets
+    'bundles/app/css/bootstrap.css'
+    'bundles/app/css/style.css'
+    'bundles/app/css/flexslider.css'
+    'bundles/app/css/swipebox.css'
+    'bundles/app/css/animate.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
 {% block body %}
     <!-- //网站基本信息显示 -->
     <div class="header-bottom container">
@@ -25,4 +35,30 @@
         </div>
     </div>
     {{ render(controller('AppBundle:Default:footer')) }}
+{% endblock %}
+{% block javascripts %}
+    {% javascripts
+    '@AppBundle/Resources/public/js/jquery-3.3.1.min.js'
+    '@AppBundle/Resources/public/js/move-top.js'
+    '@AppBundle/Resources/public/js/easing.js'
+    '@AppBundle/Resources/public/js/jquery.swipebox.min.js'
+    '@AppBundle/Resources/public/js/wow.min.js'
+    %}
+
+
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script src="{{ asset_url }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+            });
+        });
+        jQuery(function($) {
+            $(".swipebox").swipebox();
+        });
+        new WOW().init();
+    </script>
+    {% endjavascripts %}
 {% endblock %}

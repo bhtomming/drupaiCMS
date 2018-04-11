@@ -13,7 +13,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <header  class="{% block header_class %}ndheader{% endblock %}" id="header" role="banner">
+        <header  class="header" id="{% block header_class %}header{% endblock %}" role="banner">
             <div class="container">
                 {{ render(controller('AppBundle:Default:menu')) }}
             </div>
