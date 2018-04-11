@@ -55,8 +55,10 @@ class AdminController extends BaseAdminController
             $article->setTitle($node[1]);
             $article->setCreatedAt(new \DateTime(date("Y-m-d h:i:s",$node[2])));
             $article->setUpdatedAt(new \DateTime(date("Y-m-d h:i:s",$node[3])));
-            $article->setSummary($node[6]);
+            $article->setSummary(substr_replace($node[5],'...',140));
             $article->setContent($node[5]);
+            $article->setSlug($this->fillPinYin($article->getTitle()));
+            $article->setIsFront(true);
             $this->getDoctrine()->getManager()->persist($article);
             $this->getDoctrine()->getManager()->flush();
         }

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block head %}
+    {{ include('default/head.html.twig',{
+        'keywords':article.keywords,
+        'description': article.description,
+        'title' : article.title
+    }) }}
+{% endblock %}
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+{% block body %}
+{{ article.title }}
+{{ article.summary }}
+{{ article.content|raw }}
+    {{ parent() }}
+{% endblock %}

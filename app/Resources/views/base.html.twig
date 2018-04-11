@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        {% block metas %}
-            <meta name="keywords" content="{{ site.keywords }}" />
-            <meta name="description" content="{{ site.description }}" />
-            <meta name="generator" content="DrupaiCMS (http://www.drupai.com)" />
-            <meta name="rights" content="北海助派网络信息技术有限公司 (http://www.drupai.com)" />
+        {% block head %}
+        {{ render(controller('AppBundle:Default:head')) }}
         {% endblock %}
-        <title>{% block title %}{{ site.title }}{% endblock %}</title>
+
         {% block stylesheets %}
             {% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
@@ -17,6 +13,12 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <header  class="{% block header_class %}ndheader{% endblock %}" id="header" role="banner">
+            <div class="container">
+                {{ render(controller('AppBundle:Default:menu')) }}
+            </div>
+        </header>
+
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

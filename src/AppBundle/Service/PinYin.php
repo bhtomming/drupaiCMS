@@ -19,23 +19,8 @@ class PinYin
 
     /**
      * @desc 将字符串转换成拼音字符串
-     * @param $string
-     * @param $upper
-     * @return string
-     *
-     * 例如：getChineseChar('我是作者'); 全部字符串+小写
-     * return "wo shi zuo zhe"
-     *
-     * 例如：getChineseChar('我是作者',true); 首字母+小写
-     * return "w s z z"
-     *
-     * 例如：getChineseChar('我是作者',true,true); 首字母+大写
-     * return "W S Z Z"
-     *
-     * 例如：getChineseChar('我是作者',false,true); 首字母+大写
-     * return "WO SHI ZUO ZHE"
      */
-     public function getChineseChar($string,$isOne=false,$upper=false) {
+     public function getChineseChar($string,$isOne=false,$upper=false,$suf='.html') {
          $spellArray = self::getArray();
          $str_arr = $this->utf8_str_split($string); //将字符串拆分成数组
          $result = array();
@@ -50,7 +35,7 @@ class PinYin
             $chinese = $isOne ? substr($chinese,0,1) : $chinese;
             $result[] = $upper ? strtoupper($chinese) : $chinese;
         }
-        return implode('-', $result);
+        return implode('-', $result).$suf;
     }
     /**
      * @desc 将字符串转换成数组

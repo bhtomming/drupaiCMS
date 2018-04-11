@@ -2,6 +2,8 @@
 # https://symfony.com/doc/current/service_container.html
 parameters:
     #parameter_name: value
+    router.request_context.host:   www.drupaicms.com
+    router.request_context.scheme: http
 
 services:
     # default configuration for services in *this* file
@@ -51,3 +53,11 @@ services:
     pinyin:
         class: 'AppBundle\Service\PinYin'
         public: true
+
+    app.sitemap.article_subscriber:
+            class: AppBundle\EventListener\SitemapSubscriber
+            arguments:
+                - "@router"
+                - "@doctrine"
+            tags:
+                - { name: "kernel.event_subscriber", priority: 100 }

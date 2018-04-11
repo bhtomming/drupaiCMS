@@ -2,13 +2,13 @@
     <div class="container text-gray">
         <div class="row">
             <div class="col-md-4">
-                {% include 'default/friend_link.html.twig' %}
+                {{  include('default/friend_link.html.twig', { 'links': links }) }}
             </div>
             <div class="col-md-4" >
-                {% include 'default/category.html.twig' %}
+                {{  include('default/category.html.twig', { 'categories': categories }) }}
             </div>
             <div class="col-md-4">
-                {% include 'default/footer_cotact.html.twig' %}
+                {{  include('default/footer_cotact.html.twig') }}
             </div>
         </div>
     </div>

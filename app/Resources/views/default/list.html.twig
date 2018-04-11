@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% if articles %}
+        {{ dump(articles) }}
+    {% for article in articles %}
+        {{ article.title }}
+        {{ article.summary|raw }}
+    {% endfor %}
+    {% endif %}
+{% endblock %}

@@ -1,7 +1,16 @@
-{% extends 'base.html.twig' %}
-{% block title %}
-    浏服务器文件
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    {{ render(controller('AppBundle:Default:head')) }}
+    {% block stylesheets %}
+        {% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
 {% block body %}
     <button class="btn btn-success">上传图片</button>
     <button class="btn btn-warning" data-toggle="modal" data-target="#modifyModal" data-action="{{ path('mod') }}" >修改名称</button>
@@ -10,16 +19,16 @@
 
     <div class="container">
         <div class="row">
-        {% for image in images %}
-            <div class="col-md-2">
-                <div class="card">
-                    <img src="{{ image.path }}" class="img-thumbnail" title="{{ image.fileName }}" />
-                    <div class="card-body">
-                        <h4 class="card-title">{{ image.fileName }}</h4>
+            {% for image in images %}
+                <div class="col-md-2">
+                    <div class="card">
+                        <img src="{{ image.path }}" class="img-thumbnail" title="{{ image.fileName }}" />
+                        <div class="card-body">
+                            <h4 class="card-title">{{ image.fileName }}</h4>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
         </div>
     </div>
     <div id="modifyModal" class="modal fade" tabindex="-1" aria-hidden="true" aria-labelledby="modifyModalLabel">
@@ -53,6 +62,11 @@
     '@AppBundle/Resources/public/js/jquery-3.3.1.min.js'
     '@AppBundle/Resources/public/js/*'
     %}
-        <script src="{{ asset_url }}"></script>
+    <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
+</body>
+</html>
+
+
+

@@ -13,34 +13,29 @@ use AppBundle\Entity\Swiper;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class DefaultController
+ * @package AppBundle\Controller
+ */
 class DefaultController extends Controller
 {
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="homepage",options={"sitemap" = true})
      */
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
         $em = $this->getDoctrine()->getManager();
-        $site = $this->getEntityAll($em,Sittings::class);
-        $menu = $this->getMenu($em);
-        $links = $this->getEntityAll($em,FriendLink::class);
-        $categories = $this->getEntityAll($em,Category::class );
         $technology = $this->getArticleBy($em,['categories' => 'technology']);
         $cases = $this->getEntityAll($em,CaseApp::class);
         $service = $this->getEntityAll($em,SiteBuild::class);
         $about = $this->getArticleBy($em,['categories' => 'about']);
         $swipers = $this->getEntityAll($em,Swiper::class);
         return $this->render('default/index.html.twig', [
-            'site' => $site[0],
-            'menus' => $menu,
-            'links' => $links,
-            'categories' => $categories,
             'technologies' => $technology,
             'cases' => $cases,
             'services' => $service,
@@ -50,26 +45,20 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/upload/file", name="upload")
+     * @Route("/article/{slug}", requirements={"_format":"html"},
+     *     name="show")
      */
-    public function uploadAction(Request $request){
-        $file = $request->files->get('upload');
-        $token = $request->request->get('token');
-        $fileName = $this->get('app.file.uploader')->upload($file);
-        //$data = "<script type=\"text / javascript\"> window.parent.CKEDITOR.tools.callFunction( '/uploads/images/".$fileName."','');</script>";
-        $data  = [
-            'uploaded' => 1,
-            'fileName' => $fileName,
-            'url' => $this->getParameter('app.path.article_images').'/'.$fileName,
-        ];
-        return new JsonResponse($data);
+    public function showAction(Article $article){
+        return $this->render('default/show.html.twig',['article' => $article]);
     }
-
     /**
-     * @Route("/article/{id}", name="show")
+     * @Route("/articles/{categories}", requirements={"_format":"html"},
+     *      name="category")
      */
-    public function showAction(){
-
+    public function showCategoryAction($categories){
+        $em = $this->getDoctrine()->getManager();
+        $articles = $this->getArticleBy($em,['categories' => $categories]);
+        return $this->render('default/list.html.twig',['articles' => $articles]);
     }
 
     /**
@@ -99,35 +88,39 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/api/images/del", name="del");
+     * 显示网站菜单
      */
-    public function imagesDelAction(Request $request){
-        $data = [
-            'status' => 202,
-        ];
-        $fileName = $this->getParameter('kernel.project_dir').'/web'.$request->request->get('fileName');
-        if(file_exists($fileName)){
-            unlink($fileName);
-            $data['status'] = 200;
-        }
-        return new JsonResponse($data);
+    public function menuAction(){
+        $em = $this->getDoctrine()->getManager();
+        $menu = $this->getMenu($em);
+        return $this->render('default/menu.html.twig',['menus' => $menu]);
+    }
+
+
+    /**
+     * 网站文档里的头部信息
+     */
+    public function headAction(){
+        $em = $this->getDoctrine()->getManager();
+        $site = $em->getRepository(Sittings::class)->find(1);
+        return $this->render('default/head.html.twig',[
+            'keywords'=>$site->getKeywords(),
+            'description' => $site->getDescription(),
+            'title' => $site->getTitle(),
+            ]);
     }
 
     /**
-     * @Route("/api/images/modify", name="mod");
+     * 网站底部信息
      */
-    public function imagesModAction(Request $request){
-        $data = [
-            'status' => 202,
-        ];
-        $filePath = $this->getParameter('kernel.project_dir').'/web'.$request->request->get('filePath');
-        $fileName = $this->getParameter('kernel.project_dir').'/web'.$this->getParameter('app.path.article_images').'/'.$request->request->get('fileName');
-        if(file_exists($filePath)){
-            rename($filePath,$fileName);
-            $data['status'] = 200;
-        }
-        return new JsonResponse($data);
+    public function footerAction(){
+        $em = $this->getDoctrine()->getManager();
+        $links = $em->getRepository(FriendLink::class)->findAll();
+        $categories = $em->getRepository(Category::class)->findAll();
+        return $this->render('default/footer.html.twig',['links' => $links, 'categories' => $categories]);
     }
+
+
 
 
 
@@ -158,4 +151,5 @@ class DefaultController extends Controller
     public function getEntityAll(ObjectManager $em,$className){
         return $em->getRepository($className)->findAll();
     }
+
 }

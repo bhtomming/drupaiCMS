@@ -4,7 +4,7 @@
     {% for technology in technologies %}
     <div class="col-md-4">
         <img alt="{{ technology.title }}" class="img-responsive" src="{{ article_image }}/{{ technology.image }}" title="{{ technology.title }}" />
-        <h4><a href="#">{{ technology.title }}</a></h4>
+        <h4><a href="{{ path('show',{ slug: technology.slug}) }}">{{ technology.title }}</a></h4>
         <p>{{ technology.summary }}</p>
         <a class="button hvr-shutter-in-vertical" href="http://www.drupai.com/html.html">更多</a>
     </div>

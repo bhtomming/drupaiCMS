@@ -2,10 +2,10 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
         {% if menus %}{%- for menu in menus -%}
-            <li class="nav-item"><a href="{{ menu.0.link }}" class="nav-link">{{ menu.0.name }}</a>
+            <li class="nav-item"><a href="{{ path(menu.0.link, {categories: menu.0.name}) }}" class="nav-link">{{ menu.0.name }}</a>
                 {% if menu.submenu %}<ul class="tb-megamenu-subnav mega-nav level-1 items-9">
                 {% for smenu in menu.submenu -%}
-                <li class="tb-megamenu-item level-2 mega"><a href="{{ smenu.link }}"  title="{{ smenu.name }}">{{ smenu.name }} </a></li>
+                <li class="tb-megamenu-item level-2 mega"><a href="{{ path(smenu.link,{categories: smenu.name}) }}"  title="{{ smenu.name }}">{{ smenu.name }} </a></li>
                 {% endfor -%}
                 </ul>
                 {%- endif -%}
