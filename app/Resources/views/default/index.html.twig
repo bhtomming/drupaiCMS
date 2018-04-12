@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
-{% block header_class 'home' %}
+
 {% block stylesheets %}
     {% stylesheets
-    'bundles/app/css/bootstrap.css'
+    'bundles/app/css/bootstrap.min.css'
     'bundles/app/css/style.css'
     'bundles/app/css/flexslider.css'
     'bundles/app/css/swipebox.css'
@@ -11,20 +11,33 @@
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 {% endblock %}
+{% block body_head %}
+    <header  class="header" id="home" role="banner">
+        <div class="container">
+            {{ render(controller('AppBundle:Default:menu')) }}
+            <div class="logo wow bounceIn animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+                <a href="index.html">cultivation</a>
+            </div>
+            <div class="header-bottom">
+                {{  include('default/front/swiper.html.twig', { 'swipers':swipers }) }}
+            </div>
+        </div>
+    </header>
+{% endblock %}
 {% block body %}
     <!-- //网站基本信息显示 -->
-    <div class="header-bottom container">
-        {% include 'default/front/swiper.html.twig' %}
-    </div>
-    <div class="about_section container">
+    <div class="content">
+    <div class="about-section">
+        <div class="container">
         {% include 'default/front/about_section.html.twig' %}
+        </div>
     </div>
-    <div class="service-section bg-secondary">
-        <div class="container text-white">
+    <div class="service-section">
+        <div class="container">
             {% include 'default/front/service_section.html.twig' %}
         </div>
     </div>
-    <div class="case-section">
+    <div class="work-section">
         <div class="container">
            {% include 'default/front/case.html.twig' %}
         </div>
@@ -34,31 +47,19 @@
             {% include 'default/front/technology.html.twig' %}
         </div>
     </div>
-    {{ render(controller('AppBundle:Default:footer')) }}
+    </div>
+{{ parent() }}
 {% endblock %}
 {% block javascripts %}
+    {{ parent() }}
     {% javascripts
-    '@AppBundle/Resources/public/js/jquery-3.3.1.min.js'
-    '@AppBundle/Resources/public/js/move-top.js'
-    '@AppBundle/Resources/public/js/easing.js'
     '@AppBundle/Resources/public/js/jquery.swipebox.min.js'
-    '@AppBundle/Resources/public/js/wow.min.js'
     %}
-
-
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <script src="{{ asset_url }}"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $(".scroll").click(function(event){
-                event.preventDefault();
-                $('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
-            });
-        });
         jQuery(function($) {
             $(".swipebox").swipebox();
         });
-        new WOW().init();
     </script>
     {% endjavascripts %}
 {% endblock %}

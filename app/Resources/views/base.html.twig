@@ -13,13 +13,43 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <header  class="header" id="{% block header_class %}header{% endblock %}" role="banner">
+        {% block body_head %}
+        <header  class="header head-top" id="home" role="banner">
             <div class="container">
                 {{ render(controller('AppBundle:Default:menu')) }}
             </div>
         </header>
-
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% endblock %}
+        {% block body %}
+            {{ render(controller('AppBundle:Default:footer')) }}
+        {% endblock %}
+        {% block javascripts %}
+            {% javascripts
+            '@AppBundle/Resources/public/js/jquery-3.3.1.min.js'
+            '@AppBundle/Resources/public/js/move-top.js'
+            '@AppBundle/Resources/public/js/easing.js'
+            '@AppBundle/Resources/public/js/wow.min.js'
+            %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+            <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+            <script type="text/javascript">
+                $("span.menu").click(function(){
+                    $(".top-menu ul").slideToggle("slow" , function(){
+                    });
+                });
+                jQuery(document).ready(function($) {
+                    $(".scroll").click(function(event){
+                        event.preventDefault();
+                        $('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+                    });
+                });
+                new WOW().init();
+                $(document).ready(function() {
+                    $().UItoTop({ easingType: 'easeOutQuart' });
+                });
+            </script>
+            <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+        {% endblock %}
     </body>
 </html>

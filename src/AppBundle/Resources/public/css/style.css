@@ -26,9 +26,10 @@ ul{
 	margin:0 0;	
 }
 body{
-	padding:0 0;
-	margin:0 0; 
-	font-family: 'Open Sans', sans-serif;
+  padding:0 0;
+  margin:0 0;
+  font-family: 'Microsoft YaHei','微软雅黑', sans-serif;
+  font-size: 14px;
 }
 .copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 .header {
@@ -40,6 +41,7 @@ body{
   -moz-background-size: cover;
   -o-background-size: cover;
   -ms-background-size: cover;
+
 }
 .header-top {
   margin-top: 1em;
@@ -124,7 +126,7 @@ span.menu {
   left: 0;
   width: 100%;
 }
-.header-img1 {
+.header-img {
   background: #16A667;
     padding: 1.5em 2em;
 }
@@ -262,6 +264,7 @@ transform: scale(1);
   padding-top: 7em;
   color: #fff;
   margin: 0 auto;
+  display: block;
 }
 .textbox {
 -webkit-transition: all 0.7s ease;
@@ -369,7 +372,7 @@ a.button {
   background:#3f454d;
 }
 .cat h3 {
-  font-size: 2.5em;
+  font-size: 1.5em;
   text-transform: capitalize;
   color:#fff;
   margin-bottom: 0.7em;
@@ -390,7 +393,7 @@ a.button {
   color: #f2af00;
 }
 .up h3 {
-  font-size: 2.5em;
+  font-size: 1.5em;
   text-transform: capitalize;
   color:#fff;
   margin-bottom: 1em;
@@ -427,7 +430,7 @@ a.button {
   color:#999;
 }
 .cont h3 {
-  font-size: 2.5em;
+  font-size: 1.5em;
   text-transform: capitalize;
   color:#fff;
   margin-bottom: 1em;
@@ -551,7 +554,7 @@ color:#f2af00;
 }
 /*about*/
 .header.head-top {
-  min-height: 450px;
+    min-height: 450px;
   }
 .logo.logo1 {
   margin-top: 10em;
@@ -1045,18 +1048,10 @@ a.button1 {
 .header-grids {
   bottom: -28em;
 }
-.header-img1 {
+.header-img {
  padding: 1.5em 1.5em;
 }
-.header-img2 {
- padding: 1.5em 1.5em;
-}
-.header-img3 {
- padding: 1.5em 1.5em;
-}
-.header-img4 {
- padding: 1.5em 1.5em;
-}
+
 .header-grid h4 {
   font-size: 1em;
 }

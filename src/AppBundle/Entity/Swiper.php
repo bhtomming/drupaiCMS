@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\File\File;
  *
  * @ORM\Table(name="swiper")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SwiperRepository")
- *  @Vich\Uploadable
+ * @Vich\Uploadable
  */
 class Swiper
 {
@@ -27,7 +27,7 @@ class Swiper
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=100)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
 
@@ -67,7 +67,6 @@ class Swiper
      *
      * @param string $image
      *
-     * @return Swiper
      */
     public function setImage($image)
     {
@@ -135,11 +134,15 @@ class Swiper
     }
 
     public function getImageFile(){
+
         return $this->imageFile;
+
     }
 
     public function setImageFile(File $image = null){
+
         $this->imageFile = $image;
+
     }
 }
 

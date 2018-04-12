@@ -1,14 +1,14 @@
 {% if abouts %}
 <h3>关于我们</h3>
-<div class="row">
+<div class="row about-grids">
     {% for about in abouts %}
-    <div class="col-md-5">
+    <div class="col-md-5 about-img wow bounceInRight animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
         {% image '@AppBundle/Resources/public/images/logo.png' %}
         <img src="{{ asset_url }}" class="img-responsive" />
         {% endimage %}
     </div>
-    <div class="col-md-7">
-        {{ about.summary }}
+    <div class="col-md-7  wow bounceInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+        {{ about.content | raw }}
     </div>
         {% endfor %}
 </div>

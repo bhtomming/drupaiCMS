@@ -1,15 +1,37 @@
-<footer class="footer-section">
-    <div class="container text-gray">
-        <div class="row">
-            <div class="col-md-4">
+<footer class="categories-section">
+    <div class="container">
+        <div class="row footer-grids">
+            <div class="col-md-4 cat wow bounceInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
                 {{  include('default/friend_link.html.twig', { 'links': links }) }}
             </div>
-            <div class="col-md-4" >
+            <div class="col-md-4 cat wow bounceInRight animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
                 {{  include('default/category.html.twig', { 'categories': categories }) }}
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 cont wow bounceInRight animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
                 {{  include('default/footer_cotact.html.twig') }}
             </div>
         </div>
     </div>
 </footer>
+
+<div class="footer-section">
+    <div class="container">
+        <div class="footer-middle wow fadeInDown Big animated animated" data-wow-delay="0.4s">
+            <div class="bottom-menu">
+                <ul>
+                    <li><a href="index.html">home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="products.html">products</a></li>
+                    <li><a href="blog.html">blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom wow bounceInRight animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+            <p>Copyright &copy; 2018. 北海助派保留版权 </p>
+        </div>
+    </div>
+</div>
+
+

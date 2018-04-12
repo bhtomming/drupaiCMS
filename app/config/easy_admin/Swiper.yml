@@ -4,10 +4,9 @@ easy_admin:
             class: 'AppBundle\Entity\Swiper'
             label: '首页动画'
             title: '首页设置'
-
             form:
                 fields:
-                    - { property: 'imageFile', label: '图片', type: vich_image }
+                    - { property: 'imageFile', label: '图片', type: 'vich_image' }
                     - { property: 'title', label: '标题' }
                     - { property: 'description', label: '描述', type: 'textarea' }
             list:
