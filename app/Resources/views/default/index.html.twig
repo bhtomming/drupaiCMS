@@ -2,64 +2,47 @@
 
 {% block stylesheets %}
     {% stylesheets
-    'bundles/app/css/bootstrap.min.css'
-    'bundles/app/css/style.css'
-    'bundles/app/css/flexslider.css'
-    'bundles/app/css/swipebox.css'
-    'bundles/app/css/animate.css'
+    'bundles/app/css/swiper.min.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
+    {{ parent() }}
 {% endblock %}
-{% block body_head %}
-    <header  class="header" id="home" role="banner">
-        <div class="container">
-            {{ render(controller('AppBundle:Default:menu')) }}
-            <div class="logo wow bounceIn animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
-                <a href="index.html">cultivation</a>
-            </div>
-            <div class="header-bottom">
-                {{  include('default/front/swiper.html.twig', { 'swipers':swipers }) }}
-            </div>
-        </div>
-    </header>
+{% block banner %}
+    {{ include('default/front/slide.html.twig',{ 'slides': sliders }) }}
 {% endblock %}
 {% block body %}
     <!-- //网站基本信息显示 -->
     <div class="content">
-    <div class="about-section">
-        <div class="container">
-        {% include 'default/front/about_section.html.twig' %}
+        <div class="header-bottom py-md-5">
+            <div class="container">
+            {{  include('default/front/swiper.html.twig', { 'swipers':swipers }) }}
+            </div>
         </div>
-    </div>
-    <div class="service-section">
-        <div class="container">
-            {% include 'default/front/service_section.html.twig' %}
+        <div class="about-section py-md-5">
+            <div class="container">
+            {% include 'default/front/about_section.html.twig' %}
+            </div>
         </div>
-    </div>
-    <div class="work-section">
-        <div class="container">
-           {% include 'default/front/case.html.twig' %}
+        <div class="service-section bg-secondary ">
+            <div class="container text-white">
+                {% include 'default/front/service_section.html.twig' %}
+            </div>
         </div>
-    </div>
-    <div class="news-section">
-        <div class="container">
-            {% include 'default/front/technology.html.twig' %}
+        <div class="work-section">
+            <div class="container">
+               {% include 'default/front/case.html.twig' %}
+            </div>
         </div>
-    </div>
+        <div class="news-section">
+            <div class="container">
+                {% include 'default/front/technology.html.twig' %}
+            </div>
+        </div>
     </div>
 {{ parent() }}
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    {% javascripts
-    '@AppBundle/Resources/public/js/jquery.swipebox.min.js'
-    %}
-    <script src="{{ asset_url }}"></script>
-    <script type="text/javascript">
-        jQuery(function($) {
-            $(".swipebox").swipebox();
-        });
-    </script>
-    {% endjavascripts %}
+
 {% endblock %}

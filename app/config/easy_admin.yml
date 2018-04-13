@@ -12,6 +12,7 @@ easy_admin:
             - label: '内容管理'
               children:
                 - Article
+                - Slide
                 - Category
                 - CaseApp
                 - SiteBuild

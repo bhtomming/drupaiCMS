@@ -1,10 +1,10 @@
 {% if swipers %}
-<div class="header-grids row">
+<div class="row my-md-5">
 {% for key, swiper in swipers %}
-    <div class="col-md-3 header-grid">
-        <div class="header-img wow animated {% if key == 0 %}bounceInLeft{% elseif key == 1 %}fadeInDownBig{% elseif key == 2 %}fadeInUpBig{% else %}bounceInRight{% endif %}" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+    <div class="col-md-3 ">
+        <div class="header-img pb-md-3 text-center border border-primary wow animated {% if key == 0 %}bounceInLeft{% elseif key == 1 %}fadeInDownBig{% elseif key == 2 %}fadeInUpBig{% else %}bounceInRight{% endif %}" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
             <img src="{{ swiper_image }}/{{ swiper.image }}" class="img-responsive"/>
-            <h4 class="card-title text-center">{{ swiper.title }}</h4>
+            <h4 class="card-title">{{ swiper.title }}</h4>
             <p class="card-text">{{ swiper.description }}</p>
         </div>
     </div>

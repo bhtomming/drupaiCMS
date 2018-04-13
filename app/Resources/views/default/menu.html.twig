@@ -1,32 +1,27 @@
-<div class="header-top">
-<nav class="top-menu">
-    <span class="menu"><img src="/bundles/app/images/nav.png" alt=""/> </span>
-    <ul>
-    {% if menus %}{%- for menu in menus -%}
-        <li {% if menu.submenu %}class="nav-item dropdown"{% endif %} >
-            <a href="{{ path(menu.0.link, {categories: menu.0.name}) }}" {% if menu.submenu %}class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{% endif %}>{{ menu.0.name }}</a>
-            {% if menu.submenu %}
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                {% for smenu in menu.submenu -%}
-                <a class="dropdown-item" href="{{ path(smenu.link,{categories: smenu.name}) }}"  title="{{ smenu.name }}">{{ smenu.name }} </a>
-                {% endfor -%}
-                </div>
-            {%- endif -%}
-        </li><label>/</label>
-    {%- endfor -%}{% endif -%}
-    </ul>
-</nav>
-    <script>
-
-    </script>
-    <div class="search">
-        <form>
-            <input type="text" value="Search.." onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '';}" >
-            <input type="submit" value="">
-        </form>
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/" >Drupai.com</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMainMenuContent" aria-controls="navbarMainMenuContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarMainMenuContent">
+        <ul class="navbar-nav">
+        {% if menus %}{%- for menu in menus -%}
+            <li class="nav-item py-md-3{% if menu.submenu %} dropdown{% endif %}" >
+                <a href="{% if menu.submenu %}#{% else %}{{ path(menu.0.link, {categories: menu.0.name}) }}{% endif %}" class="nav-link {% if menu.submenu %}dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false{% endif %}">{{ menu.0.name }}</a>
+                {% if menu.submenu %}
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    {% for smenu in menu.submenu -%}
+                    <a class="dropdown-item" href="{{ path(smenu.link,{categories: smenu.name}) }}"  title="{{ smenu.name }}">{{ smenu.name }} </a>
+                    {% endfor -%}
+                    </div>
+                {%- endif -%}
+            </li>
+        {%- endfor -%}{% endif -%}
+        </ul>
     </div>
-    <div class="clearfix"></div>
-</div>
+</nav>
+
+
 
 
 

@@ -9,6 +9,7 @@ use AppBundle\Entity\FriendLink;
 use AppBundle\Entity\Menu;
 use AppBundle\Entity\SiteBuild;
 use AppBundle\Entity\Sittings;
+use AppBundle\Entity\Slide;
 use AppBundle\Entity\Swiper;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -35,12 +36,14 @@ class DefaultController extends Controller
         $service = $this->getEntityAll($em,SiteBuild::class);
         $about = $this->getArticleBy($em,['categories' => 'about']);
         $swipers = $this->getEntityAll($em,Swiper::class);
+        $sliders = $this->getEntityAll($em,Slide::class);
         return $this->render('default/index.html.twig', [
             'technologies' => $technology,
             'cases' => $cases,
             'services' => $service,
             'abouts' => $about,
             'swipers' => $swipers,
+            'sliders' => $sliders,
         ]);
     }
 

@@ -186,7 +186,7 @@ class Article
      */
     public function __construct()
     {
-        //$this->createdAt = new \DateTime();
+        $this->setCreatedAt(new \DateTime());
         $this->categories = new ArrayCollection();
     }
 

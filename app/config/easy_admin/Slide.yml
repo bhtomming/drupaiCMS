@@ -1,0 +1,19 @@
+easy_admin:
+    entities:
+        Slide:
+            class: 'AppBundle\Entity\Slide'
+            label: '幻灯片管理'
+            title: '幻灯片信息'
+            form:
+                fields:
+                    - { property: imageFile, label: '图片', type: 'vich_image' }
+                    - { property: title, label: '标题' }
+                    - { property: description, label: '描述信息' }
+            list:
+                fields:
+                    - { property: id, label: 'ID' }
+                    - { property: image, label: '图片', type: 'image', base_path: '%app.path.slide_images%' }
+                    - { property: title, label: '标题' }
+                    - { property: description, label: '描述信息' }
+                    - { property: createdAt, label: '创建时间' }
+                    - { property: updatedAt, label: '修改时间' }

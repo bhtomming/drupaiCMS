@@ -1,8 +1,8 @@
 {% if links %}
     <h3>友情链接</h3>
-    <ul>
+    <ul class="list-group">
         {% for link in links %}
-            <li><a href="{{ link.link }}" target="_blank">{{ link.site }}</a></li>
+            <li class="list-group-item list-group-item-dark"><a href="{{ link.link }}" target="_blank">{{ link.site }}</a></li>
         {% endfor %}
     </ul>
 {% endif %}
