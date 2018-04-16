@@ -2,7 +2,7 @@
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {% for slider in sliders %}
-        <div class="swiper-slide"><img src="{{ slide_image }}/{{ slider.image }}"></div>
+        <div class="swiper-slide"><img src="{{ slide_image }}/{{ slider.image }}" class="img-fluid"></div>
         {% endfor %}
     </div>
     <!-- 如果需要分页器 -->

@@ -1,0 +1,11 @@
+$(function(){
+    $(".swiper").hover(function(){
+        $(this).removeClass("text-primary");
+        $(this).addClass("bg-primary");
+        $(this).addClass("text-white");
+    },function(){
+        $(this).removeClass("bg-primary");
+        $(this).removeClass("text-white");
+        $(this).addClass("text-primary");
+    });
+});

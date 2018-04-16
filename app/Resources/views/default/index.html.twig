@@ -3,23 +3,21 @@
 {% block stylesheets %}
     {% stylesheets
     'bundles/app/css/swiper.min.css'
+    'bundles/app/css/iconfont.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
     {{ parent() }}
 {% endblock %}
-{% block banner %}
-    {{ include('default/front/slide.html.twig',{ 'slides': sliders }) }}
-{% endblock %}
 {% block body %}
     <!-- //网站基本信息显示 -->
-    <div class="content">
-        <div class="header-bottom py-md-5">
+        {{ include('default/front/slide.html.twig',{ 'slides': sliders }) }}
+        <div class="header-bottom">
             <div class="container">
             {{  include('default/front/swiper.html.twig', { 'swipers':swipers }) }}
             </div>
         </div>
-        <div class="about-section py-md-5">
+        <div class="about-section bg-light py-md-5">
             <div class="container">
             {% include 'default/front/about_section.html.twig' %}
             </div>
@@ -39,10 +37,13 @@
                 {% include 'default/front/technology.html.twig' %}
             </div>
         </div>
-    </div>
 {{ parent() }}
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-
+    {% javascripts
+    '@AppBundle/Resources/public/js/frontend.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

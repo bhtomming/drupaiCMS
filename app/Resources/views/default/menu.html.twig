@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg my-md-3">
     <a class="navbar-brand" href="/" >Drupai.com</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMainMenuContent" aria-controls="navbarMainMenuContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -6,12 +6,12 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarMainMenuContent">
         <ul class="navbar-nav">
         {% if menus %}{%- for menu in menus -%}
-            <li class="nav-item py-md-3{% if menu.submenu %} dropdown{% endif %}" >
+            <li class="nav-item{% if menu.submenu %} dropdown{% endif %}" >
                 <a href="{% if menu.submenu %}#{% else %}{{ path(menu.0.link, {categories: menu.0.name}) }}{% endif %}" class="nav-link {% if menu.submenu %}dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false{% endif %}">{{ menu.0.name }}</a>
                 {% if menu.submenu %}
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     {% for smenu in menu.submenu -%}
-                    <a class="dropdown-item" href="{{ path(smenu.link,{categories: smenu.name}) }}"  title="{{ smenu.name }}">{{ smenu.name }} </a>
+                    <a class="dropdown-item" href="{{ path(smenu.link,{'categories': smenu.name}) }}"  title="{{ smenu.name }}">{{ smenu.name }} </a>
                     {% endfor -%}
                     </div>
                 {%- endif -%}

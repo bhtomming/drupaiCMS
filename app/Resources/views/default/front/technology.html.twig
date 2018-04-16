@@ -2,11 +2,11 @@
 <h3>技术信息</h3>
 <div class="row text-center">
     {% for technology in technologies %}
-    <div class="col-md-4 wow bounceInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
-        {% if technology.image %}<img alt="{{ technology.title }}" class="img-responsive" src="{{ article_image }}/{{ technology.image }}" title="{{ technology.title }}" />{% endif %}
+    <div class="col-md-4 my-3 wow bounceInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+        {% if technology.image %}<img alt="{{ technology.title }}" class="img-fluid" src="{{ article_image }}/{{ technology.image }}" title="{{ technology.title }}" />{% endif %}
         <h4><a href="{{ path('show',{ slug: technology.slug}) }}">{{ technology.title }}</a></h4>
         <p>{{ technology.summary | raw }}</p>
-        <a class="button btn btn-success" href="{{ path('show',{ slug: technology.slug}) }}">更多</a>
+        <a class="button btn btn-primary" href="{{ path('show',{ slug: technology.slug}) }}">更多</a>
     </div>
     {% endfor %}
 </div>

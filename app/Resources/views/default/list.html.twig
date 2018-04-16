@@ -1,10 +1,35 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    {% if articles %}
-        {{ dump(articles) }}
-    {% for article in articles %}
-        {{ article.title }}
-        {{ article.summary|raw }}
-    {% endfor %}
-    {% endif %}
+    <img src="{{ asset('bundles/app/images/nbanner.jpg') }}" class="img-fluid"/>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        {% for bread in breads %}
+                        <li class="breadcrumb-item{% if loop.last %} active" aria-current="page{% endif %}"><a href="{% if loop.first %}{{ path('homepage') }}{% endif %}">{{ bread }}</a></li>
+                        {% endfor %}
+                    </ol>
+                </nav>
+                <ul class="list-unstyled">
+                    {% if articles %}
+                        {% for article in articles %}
+                            <li class="media border-bottom border-primary">
+                                <img src="{% if article.image %}{{ article_image }}/{{ article.image }}{% else %}{{ asset('bundles/app/images/webkn.jpg') }}{% endif %}" class="mr-3 my-3 img-fluid" />
+                                <div class="media-body">
+                                    <a href="{{ path('show',{ 'slug': article.slug }) }}" class="text-muted">
+                                        <h4>{{ article.title }}</h4></a>
+                                    <a href="{{ path('show',{ 'slug': article.slug }) }}"  class="text-muted">
+                                        <p>{{ article.summary|raw }}</p></a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+            {{ render(controller('AppBundle:Default:sidebar')) }}
+        </div>
+    </div>
+
+    {{ parent() }}
 {% endblock %}

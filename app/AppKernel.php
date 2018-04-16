@@ -32,8 +32,8 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
 
             if ('dev' === $this->getEnvironment()) {
-                $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
                 $bundles[] = new Symfony\Bundle\WebServerBundle\WebServerBundle();
+                $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
             }
         }
 
@@ -43,6 +43,10 @@ class AppKernel extends Kernel
     public function getRootDir()
     {
         return __DIR__;
+    }
+    public function getProjectDir()
+    {
+        return __DIR__.'/..';
     }
 
     public function getCacheDir()
@@ -65,4 +69,6 @@ class AppKernel extends Kernel
         });
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
+
+
 }

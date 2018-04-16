@@ -1,0 +1,14 @@
+{% if news %}
+<div class="col-3">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">最新文章</h5>
+        </div>
+        {% for newa in news %}
+        <div class="card-text list-group-item">
+            <a href="{{ path('show',{'slug':newa.slug}) }}" class="list-link">{{ newa.title }}</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

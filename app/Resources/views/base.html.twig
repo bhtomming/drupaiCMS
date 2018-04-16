@@ -18,17 +18,17 @@
     </head>
     <body>
         {% block navbar %}
-        <header  class="header bg-light fixed-top" id="header" role="banner">
-            <div class="container ">
+        <header  class="header fixed-top bg-dark" id="header" role="banner">
+            <div class="container">
                 {{ render(controller('AppBundle:Default:menu')) }}
             </div>
         </header>
         {% endblock %}
-
-        {% block banner %}{% endblock %}
+        <div class="content">
         {% block body %}
             {{ render(controller('AppBundle:Default:footer')) }}
         {% endblock %}
+        </div>
         {% block javascripts %}
             {% javascripts
             '@AppBundle/Resources/public/js/jquery-3.3.1.min.js'

@@ -10,8 +10,24 @@
     {{ article.title }}
 {% endblock %}
 {% block body %}
-{{ article.title }}
-{{ article.summary }}
-{{ article.content|raw }}
+    <img src="{{ asset('bundles/app/images/nbanner.jpg') }}" class="img-fluid"/>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        {% for bread in breads %}
+                            <li class="breadcrumb-item{% if loop.last %} active" aria-current="page{% endif %}"><a href="{% if loop.first %}{{ path('homepage') }}{% endif %}">{{ bread }}</a></li>
+                        {% endfor %}
+                    </ol>
+                </nav>
+                {{ article.title }}
+                {{ article.summary }}
+                {{ article.content|raw }}
+            </div>
+            {{ render(controller('AppBundle:Default:sidebar')) }}
+        </div>
+    </div>
+
     {{ parent() }}
 {% endblock %}

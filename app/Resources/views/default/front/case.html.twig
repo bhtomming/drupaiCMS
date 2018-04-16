@@ -1,17 +1,15 @@
 {% if cases %}
 <h3>案例展示</h3>
-<div class="latest-grids">
-    <div class="row">
-        {% for case in cases %}
-        <div class="col-md-3 latest-grid work">
-            <a href="{{ case.siteLink }}" class="swipebox">
-                <img src="{{ case_image }}/{{ case.sitePic }}" class="img-responsive" alt="{{ case.siteName }}" title="{{ case.siteName }}" />
-                <div class="textbox">
-                    <img src="/bundles/app/images/iconfont-shipin.png" class="img-responsive" alt="{{ case.siteName }}" title="{{ case.siteName }}" />
-                </div>
-            </a>
-        </div>
-        {% endfor %}
+<div class="row justify-content-center px-3">
+    {% for case in cases %}
+    <div class="col-md-3 work text-center col-6">
+        <a href="{{ case.siteLink }}" class="swipebox">
+            <img src="{{ case_image }}/{{ case.sitePic }}" class="img-fluid" alt="{{ case.siteName }}" title="{{ case.siteName }}" />
+            <div class="textbox">
+                <img src="/bundles/app/images/iconfont-shipin.png" class="img-fluid" alt="{{ case.siteName }}" title="{{ case.siteName }}" />
+            </div>
+        </a>
     </div>
+    {% endfor %}
 </div>
 {% endif %}

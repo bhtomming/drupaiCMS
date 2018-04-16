@@ -52,7 +52,11 @@ class DefaultController extends Controller
      *     name="show")
      */
     public function showAction(Article $article){
-        return $this->render('default/show.html.twig',['article' => $article]);
+        $categories = $article->getCategories();
+        $bread[] = '首页';
+        $bread[] = $categories[0];
+        $bread[] = $article->getTitle();
+        return $this->render('default/show.html.twig',['article' => $article,'breads'=>$bread]);
     }
     /**
      * @Route("/articles/{categories}", requirements={"_format":"html"},
@@ -61,7 +65,9 @@ class DefaultController extends Controller
     public function showCategoryAction($categories){
         $em = $this->getDoctrine()->getManager();
         $articles = $this->getArticleBy($em,['categories' => $categories]);
-        return $this->render('default/list.html.twig',['articles' => $articles]);
+        $bread[] = '首页';
+        $bread[] = $categories;
+        return $this->render('default/list.html.twig',['articles' => $articles, 'breads'=>$bread]);
     }
 
     /**
@@ -111,6 +117,15 @@ class DefaultController extends Controller
             'description' => $site->getDescription(),
             'title' => $site->getTitle(),
             ]);
+    }
+
+    /**
+     * 网站侧边栏信息
+     */
+    public function sidebarAction(){
+        $em = $this->getDoctrine()->getManager();
+        $news = array_slice($this->getEntityAll($em,Article::class),0,5);
+        return $this->render('default/sidebar.html.twig',['news'=>$news]);
     }
 
     /**

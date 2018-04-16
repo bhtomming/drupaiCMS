@@ -1,8 +1,8 @@
 {% if categories %}
 <h3>知识分类</h3>
-<ul class="list-group">
+<ul class="list-unstyled">
     {% for category in categories %}
-    <li class="list-group-item list-group-item-secondary">{{ category.title }}</li>
+    <li>{{ category.title }}</li>
     {% endfor %}
 </ul>
 {% endif %}
