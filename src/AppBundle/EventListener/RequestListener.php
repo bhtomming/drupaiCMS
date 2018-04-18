@@ -49,8 +49,8 @@ class RequestListener
             if($this->checker->isGranted('IS_AUTHENTICATED_FULLY')){
                 $userName = $this->tokenStorage->getToken()->getUsername();
             }
-            $visitedLog->setUserName($userName);
-            $visitedLog->setComeFrom($referer);
+            $visitedLog->setUserName(substr($userName,0,20));
+            $visitedLog->setComeFrom(substr($referer,0,100));
             $visitedLog->setVisitedTime(new \DateTime());
             $this->em->persist($visitedLog);
             $this->em->flush();
