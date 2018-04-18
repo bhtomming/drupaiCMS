@@ -24,7 +24,7 @@ class VisitedLog
     /**
      * @var string
      *
-     * @ORM\Column(name="page", type="string", length=50)
+     * @ORM\Column(name="page", type="string", length=200)
      */
     private $page;
 
