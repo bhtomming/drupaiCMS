@@ -6,13 +6,9 @@
         {% endblock %}
 
         {% block stylesheets %}
-            {% stylesheets
-            'bundles/app/css/bootstrap.min.css'
-            'bundles/app/css/animate.css'
-            'bundles/app/css/style.css'
-            filter='cssrewrite' %}
-                <link rel="stylesheet" href="{{ asset_url }}" />
-            {% endstylesheets %}
+            <link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap.min.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/app/css/animate.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/app/css/style.css') }}" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -30,12 +26,8 @@
         {% endblock %}
         </div>
         {% block javascripts %}
-            {% javascripts
-            '@AppBundle/Resources/public/js/jquery-3.3.1.min.js'
-            '@AppBundle/Resources/public/js/bootstrap.min.js'
-            %}
-            <script src="{{ asset_url }}"></script>
-            {% endjavascripts %}
+            <script src="{{ asset('bundles/app/js/jquery-3.3.1.min.js') }}"></script>
+            <script src="{{ asset('bundles/app/js/bootstrap.min.js') }}"></script>
         {% endblock %}
     </body>
 </html>

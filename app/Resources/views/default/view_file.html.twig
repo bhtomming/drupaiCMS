@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     {{ render(controller('AppBundle:Default:head')) }}
     {% block stylesheets %}
-        {% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap.min.css') }}" />
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
@@ -58,12 +56,8 @@
     </div>
 {% endblock %}
 {% block javascripts %}
-    {% javascripts
-    '@AppBundle/Resources/public/js/jquery-3.3.1.min.js'
-    '@AppBundle/Resources/public/js/*'
-    %}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+    <script src="{{ asset('bundles/app/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/ckbrowser') }}"></script>
 {% endblock %}
 </body>
 </html>

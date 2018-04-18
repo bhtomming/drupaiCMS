@@ -3,9 +3,7 @@
 <div class="row">
     {% for about in abouts %}
     <div class="col-md-5 wow bounceInRight animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
-        {% image '@AppBundle/Resources/public/images/logo.png' %}
-        <img src="{{ asset_url }}" class="img-fluid" />
-        {% endimage %}
+        <img src="{{ asset('bundles/app/images/logo.png') }}" class="img-fluid" />
     </div>
     <div class="col-md-7  wow bounceInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
         {{ about.content | raw }}

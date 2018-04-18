@@ -12,11 +12,7 @@
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
 </div>
-    {% javascripts
-    '@AppBundle/Resources/public/js/swiper.min.js'
-    %}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+    <script src="{{ asset('bundles/app/js/swiper.min.js') }}"></script>
     <script>
         var mySwiper = new Swiper ('.swiper-container', {
             loop: true,
