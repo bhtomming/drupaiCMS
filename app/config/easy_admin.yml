@@ -20,7 +20,7 @@ easy_admin:
                 - FriendLink
             - label: '网站设置'
               children:
-                - { entity: 'Sittings', default: true, params: { action: 'edit', id: '1' } }
+                - { entity: 'Sittings', default: true }
                 - VisitedLog
                 - Menu
             - label: '网站数据'
