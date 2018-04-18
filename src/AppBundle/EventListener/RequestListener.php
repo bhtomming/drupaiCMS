@@ -42,7 +42,7 @@ class RequestListener
         $headerAccept = explode(',',$header->get('accept'));
         if(!empty(array_intersect($logType,$headerAccept))){
             $visitedLog = new VisitedLog();
-            $visitedLog->setPage($request->getUri());
+            $visitedLog->setPage(substr($request->getUri(),0,200));
             $referer = $request->server->get('HTTP_REFERER') ? $request->server->get('HTTP_REFERER'): '直接打开';
             $visitedLog->setIpAddress($request->getClientIp());
             $userName = '匿名用户';
