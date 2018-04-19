@@ -52,11 +52,11 @@ class AdminController extends BaseAdminController
         foreach ($nodes as $node){
             $article = new Article();
             $article->setAuthor($this->getUser());
-            $article->setTitle($node[1]);
-            $article->setCreatedAt(new \DateTime(date("Y-m-d h:i:s",$node[2])));
-            $article->setUpdatedAt(new \DateTime(date("Y-m-d h:i:s",$node[3])));
-            $article->setSummary(substr_replace($node[5],'...',140));
-            $article->setContent($node[5]);
+            $article->setTitle($node['title']);
+            $article->setCreatedAt(new \DateTime(date("Y-m-d h:i:s",$node['created'])));
+            $article->setUpdatedAt(new \DateTime(date("Y-m-d h:i:s",$node['changed'])));
+            $article->setSummary(substr_replace($node['body_value'],'...',140));
+            $article->setContent($node['body_value']);
             $article->setSlug($this->fillPinYin($article->getTitle()));
             $article->setIsFront(true);
             $this->getDoctrine()->getManager()->persist($article);

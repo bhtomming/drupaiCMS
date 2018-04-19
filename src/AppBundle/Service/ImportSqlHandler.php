@@ -12,19 +12,26 @@ namespace AppBundle\Service;
 class ImportSqlHandler{
 
     public function readFromDatabase(){
-        $conn = new \mysqli('127.0.0.1','root','root','drupai');
+        $dsn = "mysql:host=localhost;dbname=drupai;charset=utf8;";
+        $option = array(\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC);
+        $conn = new \PDO($dsn,'root','root',$option);
         $conn->query('set name utf8');
         $sql = "select entity_id, body_value,body_summary from drun_field_data_body";
-        $bodyData = $conn->query($sql)->fetch_all();
+        $thr = $conn->prepare($sql);
+        $thr->execute();
+        $bodyData = $thr->fetchAll();
         $pages = [];
         foreach ($bodyData as $index => $page){
-            $page[1] = str_replace('/sites/default/files/ueditor/','/uploads/images/articles',$page[1]);
+            $page['body_value'] = str_replace('/sites/default/files/ueditor/','/uploads/images/articles',$page['body_value']);
+            $sql = "select nid,title,created,changed from drun_node where nid = ".$bodyData[$index]['entity_id'];
+            $titles = $conn->query($sql)->fetch();
+            $page['title'] = $titles['title'];
+            $page['created'] = $titles['created'];
+            $page['changed'] = $titles['changed'];
             $bodyData[$index]  = $page;
-            $sql = "select nid,title,created,changed from drun_node where nid = ".$bodyData[$index][0];
-            $titles = $conn->query($sql)->fetch_row();
-            $pages[] = array_merge($titles,$bodyData[$index]);
+            //$pages[] = array_merge($titles,$bodyData[$index]);
         }
 
-        return $pages;
+        return $bodyData;
     }
 }
